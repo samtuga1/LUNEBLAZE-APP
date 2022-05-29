@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:luneblaze_app/UIs/views/settings/settings_viewmodel.dart';
 import 'package:stacked/stacked.dart';
+import 'package:luneblaze_app/constants/icons.dart';
 
 class SettingsView extends StatelessWidget {
   const SettingsView({Key? key}) : super(key: key);
@@ -11,6 +12,7 @@ class SettingsView extends StatelessWidget {
     return ViewModelBuilder<SettingsViewModel>.nonReactive(
       viewModelBuilder: () => SettingsViewModel(),
       builder: (context, model, child) => Scaffold(
+        backgroundColor: Colors.white,
         // App bar for the settings view
         appBar: AppBar(
           centerTitle: true,
@@ -38,16 +40,16 @@ class SettingsView extends StatelessWidget {
                 // This returns a divided listTiles where the getListTile
                 // method is being called from the setting_viewmodel.dart file
                 ...ListTile.divideTiles(context: context, tiles: [
-                  model.getListTile(Icons.security, 'Privacy Settings',
+                  model.getListTile(AppIcons.privacy, 'Privacy Settings',
                       'Control who can see your data', () {}),
-                  model.getListTile(Icons.security, 'Manage Communities',
+                  model.getListTile(AppIcons.community, 'Manage Communities',
                       'Create or Manage your communities', () {}),
                   model.getListTile(
-                      Icons.security,
+                      AppIcons.suitCase,
                       'Manage Page',
                       'Create or Manage your Organisation or Institution',
                       () {}),
-                  model.getListTile(Icons.security, 'Get notified',
+                  model.getListTile(AppIcons.doc, 'Get notified',
                       'Apply for new internship or job', () {}),
                 ]).toList(),
                 headerTitle(model,
@@ -55,13 +57,13 @@ class SettingsView extends StatelessWidget {
                 // This returns a divided listTiles where the getListTile
                 // method is being called from the setting_viewmodel.dart file
                 ...ListTile.divideTiles(context: context, tiles: [
-                  model.getListTile(Icons.security, 'About',
+                  model.getListTile(AppIcons.about, 'About',
                       'Learn more about Luneblaze', () {}),
-                  model.getListTile(Icons.security, 'Privacy Policy',
+                  model.getListTile(AppIcons.privacy, 'Privacy Policy',
                       'Read Luneblaze Privacy Policy', () {}),
-                  model.getListTile(Icons.security, 'Session Policy',
+                  model.getListTile(AppIcons.session, 'Session Policy',
                       'Read Luneblaze Session Policy', () {}),
-                  model.getListTile(Icons.security, 'Terms Of Use',
+                  model.getListTile(AppIcons.doc, 'Terms Of Use',
                       'View Terms and conditions for usage', () {}),
                 ]).toList(),
                 headerTitle(model,
@@ -69,12 +71,12 @@ class SettingsView extends StatelessWidget {
                 // This returns a divided listTiles where the getListTile
                 // method is being called from the setting_viewmodel.dart file
                 ...ListTile.divideTiles(context: context, tiles: [
-                  model.getListTile(Icons.security, 'Report',
+                  model.getListTile(AppIcons.report, 'Report',
                       'Report your bug or issue', () {}),
-                  model.getListTile(Icons.security, 'Contact Us',
+                  model.getListTile(AppIcons.envelope, 'Contact Us',
                       'Need help? Contact us here', () {}),
-                  model.getListTile(
-                      Icons.security, 'Logout', 'Logout from Luneblaze', () {}),
+                  model.getListTile(AppIcons.logout, 'Logout',
+                      'Logout from Luneblaze', () {}),
                 ]).toList(),
               ],
             ),
