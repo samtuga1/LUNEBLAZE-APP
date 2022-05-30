@@ -7,7 +7,7 @@ class AppIcons {
   static IconData privacy = Icons.security;
   static IconData community = Elusive.group;
   static IconData suitCase = LineariconsFree.briefcase;
-  static IconData doc = Icons.file_copy_outlined;
+  static IconData doc = FontAwesome5.file_alt;
   static IconData about = FontAwesome5.opera;
   static IconData session = FontAwesome5.connectdevelop;
   static IconData report = Icons.error;
