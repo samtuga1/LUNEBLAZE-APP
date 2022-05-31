@@ -1,8 +1,12 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:luneblaze_app/app/router.gr.dart';
 import 'package:stacked/stacked.dart';
 
 class SettingsViewModel extends BaseViewModel {
-  void navigateToPrivacy() {
+  void navigateToPrivacy(BuildContext context) {
     // Moves to privacy screen
+    context.router.push(const PrivacySettingsView());
   }
 
   void navigateToCommunity() {
