@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:luneblaze_app/UIs/widgets/global_appbar.dart';
 import 'package:luneblaze_app/core/view_models/settings_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 import 'package:luneblaze_app/constants/icons.dart';
@@ -14,17 +15,7 @@ class SettingsView extends StatelessWidget {
       viewModelBuilder: () => SettingsViewModel(),
       builder: (context, model, child) => Scaffold(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          centerTitle: true,
-          elevation: 0,
-          backgroundColor: Colors.white,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: () {},
-            color: Colors.grey,
-          ),
-          title: HeaderTitle(title: 'SETTINGS'),
-        ),
+        appBar: GlobalAppBar(title: 'SETTINGS'),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
@@ -37,7 +28,7 @@ class SettingsView extends StatelessWidget {
                     icon: AppIcons.privacy,
                     title: 'Privacy Settings',
                     subtitle: 'Control who can see your data',
-                    onTap: model.navigateToPrivacy,
+                    onTap: () => model.navigateToPrivacy(context),
                   ),
                   GetListTile(
                     icon: AppIcons.community,
