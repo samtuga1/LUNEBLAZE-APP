@@ -126,7 +126,7 @@ class ShowAlertBox extends StatelessWidget {
                             : null,
                         decoration: BoxDecoration(
                           color: PrivacySettingViewModel().privacyType[index][1]
-                              ? Colors.greenAccent
+                              ? Colors.green
                               : null,
                           border: Border.all(width: 1, color: Colors.grey),
                           borderRadius: BorderRadius.circular(26),
