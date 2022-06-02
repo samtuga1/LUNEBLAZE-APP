@@ -30,28 +30,36 @@ class PrivacySettingViewModel extends BaseViewModel {
     ['Public', true],
     ['Me', false]
   ];
-  String? privacyStatus = 'Public';
+  String pointsPrivacyStatus = 'Public';
+  String friendsPrivacyStatus = 'Public';
+  String contentsPrivacyStatus = 'Public';
+  String messagePrivacyStatus = 'Public';
+  String challengesPrivacyStatus = 'Public';
+  String choicesPrivacyStatus = 'Public';
+  String sessionsPrivacyStatus = 'Public';
+  String activityPrivacyStatus = 'Public';
 
-  void selectPrivacyType(int index) {
+  void selectPrivacyType(int index, String statusType) {
     if (index == 0) {
-      log(0.toString());
-      log(privacyStatus.toString());
       privacyType[index][1] = true;
       privacyType[1][1] = false;
       privacyType[2][1] = false;
-      privacyStatus = privacyType[0][0];
+      statusType = privacyType[0][0];
+      log(statusType.toString());
     }
     if (index == 1) {
       privacyType[index][1] = true;
       privacyType[0][1] = false;
       privacyType[2][1] = false;
-      privacyStatus = privacyType[1][0];
+      statusType = privacyType[1][0];
+      log(statusType.toString());
     }
     if (index == 2) {
       privacyType[index][1] = true;
       privacyType[0][1] = false;
       privacyType[1][1] = false;
-      privacyStatus = privacyType[2][0];
+      statusType = privacyType[2][0];
+      log(statusType.toString());
     }
     notifyListeners();
   }
@@ -62,34 +70,89 @@ class PrivacySettingViewModel extends BaseViewModel {
       variant: DialogType.form,
       title: title,
     );
-    log(response!.data.toString());
-    selectPrivacyType(response.data);
+    log('----------${response!.data.toString()}-------------');
+    selectPrivacyType(response.data, pointsPrivacyStatus);
   }
 
-  void whoCanSeeFriends() {
-    //
+  void whoCanSeeFriends(title) async {
+    final response = await _dialogService.showCustomDialog(
+      barrierDismissible: true,
+      variant: DialogType.form,
+      title: title,
+    );
+    log(response!.data.toString());
+    selectPrivacyType(response.data, friendsPrivacyStatus);
   }
-  void whoCanSeeContents() {
-    //
+
+  void whoCanSeeContents(title) async {
+    final response = await _dialogService.showCustomDialog(
+      barrierDismissible: true,
+      variant: DialogType.form,
+      title: title,
+    );
+    log(response!.data.toString());
+    selectPrivacyType(response.data, contentsPrivacyStatus);
   }
+
   void receiveConnectionRequest() {
-    //
+    // final response = await _dialogService.showCustomDialog(
+    //   barrierDismissible: true,
+    //   variant: DialogType.form,
+    //   title: title,
+    // );
+    // log(response!.data.toString());
+    // selectPrivacyType(response.data);
   }
-  void whoCanMessageMe() {
-    //
+  void whoCanMessageMe(title) async {
+    final response = await _dialogService.showCustomDialog(
+      barrierDismissible: true,
+      variant: DialogType.form,
+      title: title,
+    );
+    log(response!.data.toString());
+    selectPrivacyType(response.data, messagePrivacyStatus);
   }
-  void whoCanSeeChallenges() {
-    //
+
+  void whoCanSeeChallenges(title) async {
+    final response = await _dialogService.showCustomDialog(
+      barrierDismissible: true,
+      variant: DialogType.form,
+      title: title,
+    );
+    log(response!.data.toString());
+    selectPrivacyType(response.data, challengesPrivacyStatus);
   }
-  void whoCanSeeChoices() {
-    //
+
+  void whoCanSeeChoices(title) async {
+    final response = await _dialogService.showCustomDialog(
+      barrierDismissible: true,
+      variant: DialogType.form,
+      title: title,
+    );
+    log(response!.data.toString());
+    selectPrivacyType(response.data, choicesPrivacyStatus);
   }
-  void whoCanSeeSessions() {
-    //
+
+  void whoCanSeeSessions(title) async {
+    final response = await _dialogService.showCustomDialog(
+      barrierDismissible: true,
+      variant: DialogType.form,
+      title: title,
+    );
+    log(response!.data.toString());
+    selectPrivacyType(response.data, sessionsPrivacyStatus);
   }
-  void whoCanSeeActivity() {
-    //
+
+  void whoCanSeeActivity(title) async {
+    final response = await _dialogService.showCustomDialog(
+      barrierDismissible: true,
+      variant: DialogType.form,
+      title: title,
+    );
+    log(response!.data.toString());
+    selectPrivacyType(response.data, activityPrivacyStatus);
   }
+
   void conductingSessionInvite() {
     //
   }
