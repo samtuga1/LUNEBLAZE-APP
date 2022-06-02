@@ -28,7 +28,15 @@ class _BasicDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      child: null,
+      child: Padding(
+        padding: EdgeInsets.all(10),
+        child: Column(children: [
+          Text(request.title ?? 'This is the title'),
+          Column(
+            children: [],
+          )
+        ]),
+      ),
     );
   }
 }
@@ -60,8 +68,7 @@ class _FormDialog extends StatelessWidget {
                       Text(PrivacySettingViewModel().privacyType[index][0]),
                       Spacer(),
                       GestureDetector(
-                        onTap: () => completer(
-                            DialogResponse(confirmed: false, data: index)),
+                        onTap: () => completer(DialogResponse(data: index)),
                         child: Column(
                           children: [
                             Container(

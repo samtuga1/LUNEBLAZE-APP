@@ -17,7 +17,7 @@ class SettingsView extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: GlobalAppBar(
           title: 'SETTINGS',
-          onTap: model.goBack,
+          onTap: null, //model.goBack,
         ),
         body: SafeArea(
           child: SingleChildScrollView(

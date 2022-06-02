@@ -7,7 +7,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
   const GlobalAppBar({Key? key, required this.title, required this.onTap})
       : super(key: key);
   final String title;
-  final Function() onTap;
+  final Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return AppBar(
