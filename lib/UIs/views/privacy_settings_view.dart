@@ -12,15 +12,19 @@ class PrivacySettingsView extends StatelessWidget {
       viewModelBuilder: () => PrivacySettingViewModel(),
       builder: (context, model, child) => Scaffold(
           backgroundColor: Colors.white,
-          appBar: GlobalAppBar(title: 'PRIVACY SETTINGS'),
+          appBar: GlobalAppBar(
+            title: 'PRIVACY SETTINGS',
+            onTap: model.goBack,
+          ),
           body: SingleChildScrollView(
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               PrivacySettingsTile(
                 title: 'Who can see your points?',
-                onTap: () =>
-                    model.whoCanSeePoints('Who can see your points?', context),
-                subtitle: model.pointStatus,
+                onTap: () {
+                  model.whoCanSeePoints('Who can see your points?');
+                },
+                subtitle: model.privacyStatus,
               ),
               PrivacySettingsTile(
                 title: 'Who can see your friends',
@@ -121,7 +125,7 @@ class PrivacySettingsView extends StatelessWidget {
 }
 
 class PrivacySettingsTile extends StatelessWidget {
-  const PrivacySettingsTile({
+  PrivacySettingsTile({
     Key? key,
     required this.title,
     this.subtitle,

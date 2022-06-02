@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:luneblaze_app/app/app.locator.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
+
+import '../../UIs/widgets/setup_dialog_ui.dart';
 
 class PrivacySettingViewModel extends BaseViewModel {
+  final _navigation = locator<NavigationService>();
+  final _dialogService = locator<DialogService>();
   bool twoStepVerify = false;
   void switchTwoStepVerification(value) {
     twoStepVerify = value;
     notifyListeners();
   }
 
-  String? pointStatus;
+  void goBack() {
+    _navigation.popRepeated(1);
+  }
 
   int blockedNum = 0;
 
@@ -21,19 +29,40 @@ class PrivacySettingViewModel extends BaseViewModel {
     ['Public', false],
     ['Me', false]
   ];
+  String? privacyStatus;
 
   void selectPrivacyType(int index) {
-    privacyType[index][1] = true;
+    if (index == 0) {
+      print(0);
+      print(privacyStatus);
+      privacyType[index][1] = true;
+      privacyType[1][1] = false;
+      privacyType[2][1] = false;
+      privacyStatus = privacyType[0][0];
+      print(privacyStatus);
+    }
+    if (index == 1) {
+      print(1);
+      privacyType[index][1] = true;
+      privacyType[0][1] = false;
+      privacyType[2][1] = false;
+      privacyStatus = privacyType[1][0];
+    }
+    if (index == 2) {
+      print(2);
+      privacyType[index][1] = true;
+      privacyType[0][1] = false;
+      privacyType[1][1] = false;
+      privacyStatus = privacyType[2][0];
+    }
+    notifyListeners();
   }
 
-  void whoCanSeePoints(title, context) {
-    showDialog(
-      context: context,
-      builder: (ctx) => ShowAlertBox(
-        title: title,
-        onTap: () {},
-        isSelected: true,
-      ),
+  void whoCanSeePoints(title) async {
+    await _dialogService.showCustomDialog(
+      barrierDismissible: true,
+      variant: DialogType.form,
+      title: title,
     );
   }
 
@@ -78,66 +107,5 @@ class PrivacySettingViewModel extends BaseViewModel {
   }
   void organizationInvites() {
     //
-  }
-}
-
-class ShowAlertBox extends StatelessWidget {
-  const ShowAlertBox(
-      {Key? key,
-      required this.title,
-      required this.isSelected,
-      required this.onTap})
-      : super(key: key);
-  final String title;
-  final bool isSelected;
-  final Function() onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-        title: Text(
-          title,
-          style: TextStyle(fontSize: 16.5),
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: List.generate(
-            // This generates the Radio buttons which is selectable
-            PrivacySettingViewModel().privacyType.length,
-            (index) => Container(
-              margin: EdgeInsets.only(bottom: 20),
-              child: Row(children: [
-                Text(PrivacySettingViewModel().privacyType[index][0]),
-                Spacer(),
-                GestureDetector(
-                  onTap: () {
-                    PrivacySettingViewModel().selectPrivacyType(index);
-                  },
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 28,
-                        width: 28,
-                        child: PrivacySettingViewModel().privacyType[index][1]
-                            ? Icon(
-                                Icons.check,
-                                color: Colors.white,
-                              )
-                            : null,
-                        decoration: BoxDecoration(
-                          color: PrivacySettingViewModel().privacyType[index][1]
-                              ? Colors.green
-                              : null,
-                          border: Border.all(width: 1, color: Colors.grey),
-                          borderRadius: BorderRadius.circular(26),
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ]),
-            ),
-          ).toList(),
-        ));
   }
 }

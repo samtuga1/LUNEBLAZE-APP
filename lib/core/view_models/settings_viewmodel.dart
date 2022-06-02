@@ -1,12 +1,18 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:luneblaze_app/app/router.gr.dart';
+import 'package:luneblaze_app/UIs/views/privacy_settings_view.dart';
+import 'package:luneblaze_app/app/app.locator.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 class SettingsViewModel extends BaseViewModel {
-  void navigateToPrivacy(BuildContext context) {
-    // Moves to privacy screen
-    context.router.push(const PrivacySettingsView());
+  final navigation = locator<NavigationService>();
+  void navigateToPrivacy() async {
+    await navigation.navigateWithTransition(
+      PrivacySettingsView(),
+    );
+  }
+
+  void goBack() {
+    navigation.popRepeated(0);
   }
 
   void navigateToCommunity() {

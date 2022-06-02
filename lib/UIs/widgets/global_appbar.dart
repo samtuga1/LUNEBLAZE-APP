@@ -1,12 +1,13 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 // An app bar that can be used throughout the app
 class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(kBottomNavigationBarHeight);
-  const GlobalAppBar({Key? key, required this.title}) : super(key: key);
+  const GlobalAppBar({Key? key, required this.title, required this.onTap})
+      : super(key: key);
   final String title;
+  final Function() onTap;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -15,7 +16,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.white,
       leading: IconButton(
         icon: Icon(Icons.arrow_back),
-        onPressed: () => context.router.pop(),
+        onPressed: onTap,
         color: Colors.grey,
       ),
       title: Text(

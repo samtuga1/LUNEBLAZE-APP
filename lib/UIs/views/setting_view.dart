@@ -15,7 +15,10 @@ class SettingsView extends StatelessWidget {
       viewModelBuilder: () => SettingsViewModel(),
       builder: (context, model, child) => Scaffold(
         backgroundColor: Colors.white,
-        appBar: GlobalAppBar(title: 'SETTINGS'),
+        appBar: GlobalAppBar(
+          title: 'SETTINGS',
+          onTap: model.goBack,
+        ),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
@@ -28,7 +31,7 @@ class SettingsView extends StatelessWidget {
                     icon: AppIcons.privacy,
                     title: 'Privacy Settings',
                     subtitle: 'Control who can see your data',
-                    onTap: () => model.navigateToPrivacy(context),
+                    onTap: () => model.navigateToPrivacy(),
                   ),
                   GetListTile(
                     icon: AppIcons.community,

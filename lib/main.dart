@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:luneblaze_app/UIs/views/setting_view.dart';
+import 'package:luneblaze_app/UIs/widgets/setup_dialog_ui.dart';
+import 'package:luneblaze_app/app/app.locator.dart';
+import 'package:luneblaze_app/app/app.router.dart';
+import 'package:stacked_services/stacked_services.dart';
 
-import 'app/router.gr.dart';
-
-void main() {
+void main() async {
+  await setupLocator();
+  setupDialogUi();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  final _appRouter = AppRouter();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
+    return MaterialApp(
       title: 'Luneblaze',
-      routerDelegate: _appRouter.delegate(),
-      routeInformationParser: _appRouter.defaultRouteParser(),
+      navigatorKey: StackedService.navigatorKey,
+      onGenerateRoute: StackedRouter().onGenerateRoute,
     );
   }
 }
