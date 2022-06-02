@@ -24,33 +24,61 @@ class PrivacySettingsView extends StatelessWidget {
                 onTap: () {
                   model.whoCanSeePoints('Who can see your points?');
                 },
-                subtitle: model.privacyStatus,
+                subtitle: model.pointsPrivacyStatus,
               ),
               PrivacySettingsTile(
                 title: 'Who can see your friends',
-                onTap: model.whoCanSeeFriends,
+                onTap: () {
+                  model.whoCanSeeFriends('Who can see your friends');
+                },
+                subtitle: model.friendsPrivacyStatus,
               ),
               PrivacySettingsTile(
-                  title: 'Who can see your contents',
-                  onTap: model.whoCanSeeContents),
+                title: 'Who can see your contents',
+                onTap: () {
+                  model.whoCanSeeContents('Who can see your contents');
+                },
+                subtitle: model.contentsPrivacyStatus,
+              ),
               PrivacySettingsTile(
                 title: 'Do you want to receive connection request?',
                 onTap: model.receiveConnectionRequest,
               ),
               PrivacySettingsTile(
-                  title: 'Who can Message you?', onTap: model.whoCanMessageMe),
+                title: 'Who can Message you?',
+                onTap: () {
+                  model.whoCanMessageMe('Who can Message you?');
+                },
+                subtitle: model.messagePrivacyStatus,
+              ),
               PrivacySettingsTile(
-                  title: 'Who can see your challenges?',
-                  onTap: model.whoCanSeeChallenges),
+                title: 'Who can see your challenges?',
+                onTap: () {
+                  model.whoCanSeeChallenges('Who can see your challenges?');
+                },
+                subtitle: model.challengesPrivacyStatus,
+              ),
               PrivacySettingsTile(
-                  title: 'Who can see your choices?',
-                  onTap: model.whoCanSeeChoices),
+                title: 'Who can see your choices?',
+                onTap: () {
+                  model.whoCanSeeChoices('Who can see your choices?2');
+                },
+                subtitle: model.choicesPrivacyStatus,
+              ),
               PrivacySettingsTile(
-                  title: 'Who can see your sessions?',
-                  onTap: model.whoCanSeeSessions),
+                title: 'Who can see your sessions?',
+                onTap: () {
+                  model.whoCanSeeSessions('Who can see your sessions?');
+                },
+                subtitle: model.sessionsPrivacyStatus,
+              ),
               PrivacySettingsTile(
-                  title: 'Who can see your activity?',
-                  onTap: model.whoCanSeeActivity),
+                title: 'Who can see your activity?',
+                onTap: () {
+                  model.whoCanSeeActivity('Who can see your activity?');
+                },
+                subtitle: model.activityPrivacyStatus,
+              ),
               PrivacySettingsTile(
                   title: 'Do you want to get invited for conducting session?',
                   onTap: model.conductingSessionInvite),
