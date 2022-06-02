@@ -139,7 +139,9 @@ class PrivacySettingsTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Padding(
+      child: Container(
+        width: double.infinity,
+        color: Colors.transparent,
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 13),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

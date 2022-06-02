@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'dart:developer';
+
 import 'package:luneblaze_app/app/app.locator.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -25,31 +26,28 @@ class PrivacySettingViewModel extends BaseViewModel {
   }
 
   final List privacyType = [
-    ['Friends', true],
-    ['Public', false],
+    ['Friends', false],
+    ['Public', true],
     ['Me', false]
   ];
-  String? privacyStatus;
+  String? privacyStatus = 'Public';
 
   void selectPrivacyType(int index) {
     if (index == 0) {
-      print(0);
-      print(privacyStatus);
+      log(0.toString());
+      log(privacyStatus.toString());
       privacyType[index][1] = true;
       privacyType[1][1] = false;
       privacyType[2][1] = false;
       privacyStatus = privacyType[0][0];
-      print(privacyStatus);
     }
     if (index == 1) {
-      print(1);
       privacyType[index][1] = true;
       privacyType[0][1] = false;
       privacyType[2][1] = false;
       privacyStatus = privacyType[1][0];
     }
     if (index == 2) {
-      print(2);
       privacyType[index][1] = true;
       privacyType[0][1] = false;
       privacyType[1][1] = false;
@@ -59,11 +57,13 @@ class PrivacySettingViewModel extends BaseViewModel {
   }
 
   void whoCanSeePoints(title) async {
-    await _dialogService.showCustomDialog(
+    final response = await _dialogService.showCustomDialog(
       barrierDismissible: true,
       variant: DialogType.form,
       title: title,
     );
+    log(response!.data.toString());
+    selectPrivacyType(response.data);
   }
 
   void whoCanSeeFriends() {

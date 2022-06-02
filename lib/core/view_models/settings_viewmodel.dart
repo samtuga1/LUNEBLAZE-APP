@@ -1,3 +1,4 @@
+import 'package:flutter/animation.dart';
 import 'package:luneblaze_app/UIs/views/privacy_settings_view.dart';
 import 'package:luneblaze_app/app/app.locator.dart';
 import 'package:stacked/stacked.dart';
@@ -8,6 +9,8 @@ class SettingsViewModel extends BaseViewModel {
   void navigateToPrivacy() async {
     await navigation.navigateWithTransition(
       PrivacySettingsView(),
+      duration: Duration(milliseconds: 600),
+      curve: Curves.easeIn,
     );
   }
 
