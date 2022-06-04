@@ -10,15 +10,18 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 
+import '../UIs/views/blocked_users_view.dart';
 import '../UIs/views/privacy_settings_view.dart';
 import '../UIs/views/setting_view.dart';
 
 class Routes {
   static const String settingsView = '/';
   static const String privacySettingsView = '/privacy-settings-view';
+  static const String blockedUsersView = '/blocked-users-view';
   static const all = <String>{
     settingsView,
     privacySettingsView,
+    blockedUsersView,
   };
 }
 
@@ -28,6 +31,7 @@ class StackedRouter extends RouterBase {
   final _routes = <RouteDef>[
     RouteDef(Routes.settingsView, page: SettingsView),
     RouteDef(Routes.privacySettingsView, page: PrivacySettingsView),
+    RouteDef(Routes.blockedUsersView, page: BlockedUsersView),
   ];
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
@@ -41,6 +45,12 @@ class StackedRouter extends RouterBase {
     PrivacySettingsView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => const PrivacySettingsView(),
+        settings: data,
+      );
+    },
+    BlockedUsersView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const BlockedUsersView(),
         settings: data,
       );
     },
