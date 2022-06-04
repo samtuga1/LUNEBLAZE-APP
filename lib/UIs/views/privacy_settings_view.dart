@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:luneblaze_app/UIs/widgets/global_appbar.dart';
-import 'package:luneblaze_app/core/view_models/privacy_settings_viewmodel.dart';
 import 'package:stacked/stacked.dart';
+
+import '../../core/services/view_models/privacy_settings_viewmodel.dart';
 
 class PrivacySettingsView extends StatelessWidget {
   const PrivacySettingsView({Key? key}) : super(key: key);
@@ -42,7 +43,11 @@ class PrivacySettingsView extends StatelessWidget {
               ),
               PrivacySettingsTile(
                 title: 'Do you want to receive connection request?',
-                onTap: model.receiveConnectionRequest,
+                onTap: () {
+                  model.receiveConnectionRequest(
+                      'Do you want to recieve connection request?');
+                },
+                subtitle: model.connectionRequestOption,
               ),
               PrivacySettingsTile(
                 title: 'Who can Message you?',
@@ -80,23 +85,52 @@ class PrivacySettingsView extends StatelessWidget {
                 subtitle: model.activityPrivacyStatus,
               ),
               PrivacySettingsTile(
-                  title: 'Do you want to get invited for conducting session?',
-                  onTap: model.conductingSessionInvite),
+                title: 'Do you want to get invited for conducting session?',
+                onTap: () {
+                  model.conductingSessionInvite(
+                      'Do you want to get invited for conducting session?');
+                },
+                subtitle: model.conductingSessionOption,
+              ),
               PrivacySettingsTile(
-                  title: 'Do you want to get invited for Quizzes & Debates?',
-                  onTap: model.quizzesAndDebateInvite),
+                title: 'Do you want to get invited for Quizzes & Debates?',
+                onTap: () {
+                  model.quizzesAndDebateInvite(
+                      'Do you want to get invited for Quizzes & Debates?');
+                },
+                subtitle: model.quizzesAndDebatesOption,
+              ),
               PrivacySettingsTile(
-                  title: 'Do you want to get invited for interests?',
-                  onTap: model.interestInvites),
+                title: 'Do you want to get invited for interests?',
+                onTap: () {
+                  model.interestInvites(
+                      'Do you want to get invited for interests?');
+                },
+                subtitle: model.interestsOption,
+              ),
               PrivacySettingsTile(
-                  title: 'Do you want to get invited for Sessions?',
-                  onTap: model.sessionsInvite),
+                title: 'Do you want to get invited for Sessions?',
+                onTap: () {
+                  model.sessionsInvite(
+                      'Do you want to get invited for Sessions?');
+                },
+                subtitle: model.sessionsInvitationOption,
+              ),
               PrivacySettingsTile(
-                  title: 'Do you want to get invited for Institutions?',
-                  onTap: model.institutionInvites),
+                title: 'Do you want to get invited for Institutions?',
+                onTap: () {
+                  model.institutionInvites(
+                      'Do you want to get invited for Institutions?');
+                },
+                subtitle: model.insttutionsInvitationOption,
+              ),
               PrivacySettingsTile(
                 title: 'Do you want to get invited for Organisations?',
-                onTap: model.organizationInvites,
+                onTap: () {
+                  model.organizationInvites(
+                      'Do you want to get invited for Organisations?');
+                },
+                subtitle: model.organizationInvitationOption,
               ),
               Divider(
                 thickness: 4,
@@ -104,26 +138,33 @@ class PrivacySettingsView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(
                     left: 20.0, top: 12, bottom: 12, right: 7),
-                child: Row(
-                  children: [
-                    Row(
+                child: GestureDetector(
+                  onTap: model.navigateToBlocked,
+                  child: Container(
+                    color: Colors.transparent,
+                    width: double.infinity,
+                    child: Row(
                       children: [
-                        Icon(
-                          Icons.person,
-                          color: Colors.grey,
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.person,
+                              color: Colors.grey,
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'Blocked(${model.blockedNum})',
+                              style: TextStyle(fontSize: 16),
+                            )
+                          ],
                         ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          'Blocked(${model.blockedNum})',
-                          style: TextStyle(fontSize: 16),
-                        )
+                        Spacer(),
+                        Icon(Icons.arrow_forward_ios)
                       ],
                     ),
-                    Spacer(),
-                    Icon(Icons.arrow_forward_ios)
-                  ],
+                  ),
                 ),
               ),
               Divider(
@@ -140,6 +181,7 @@ class PrivacySettingsView extends StatelessWidget {
                   ),
                   Spacer(),
                   Switch(
+                    activeColor: Colors.teal,
                     value: model.twoStepVerify,
                     onChanged: (value) =>
                         model.switchTwoStepVerification(value),
