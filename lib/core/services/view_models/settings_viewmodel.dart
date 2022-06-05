@@ -1,17 +1,12 @@
-import 'package:flutter/animation.dart';
-import 'package:luneblaze_app/UIs/views/privacy_settings_view.dart';
 import 'package:luneblaze_app/app/app.locator.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
+import '../../../app/app.router.dart';
 
 class SettingsViewModel extends BaseViewModel {
   final navigation = locator<NavigationService>();
   void navigateToPrivacy() async {
-    await navigation.navigateWithTransition(
-      PrivacySettingsView(),
-      duration: Duration(milliseconds: 600),
-      curve: Curves.easeIn,
-    );
+    await navigation.navigateTo(Routes.privacySettingsView);
   }
 
   void goBack() {
