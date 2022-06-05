@@ -43,20 +43,20 @@ class PrivacySettingViewModel extends BaseViewModel {
   String _organizationInvitationOption = 'Yes';
   String get organizationInvitationOption => _organizationInvitationOption;
 
-  String select_yes_or_no(index, statusType) {
-    if (index == 0) {
-      yes_or_no_option_types[0][1] = true;
-      yes_or_no_option_types[1][1] = true;
-      statusType = yes_or_no_option_types[0][0];
-    }
-    if (index == 1) {
-      yes_or_no_option_types[1][1] = false;
-      yes_or_no_option_types[0][1] = true;
-      statusType = yes_or_no_option_types[1][0];
-    }
-    notifyListeners();
-    return statusType;
-  }
+  // String select_yes_or_no(index, statusType) {
+  //   if (index == 0) {
+  //     yes_or_no_option_types[0][1] = true;
+  //     yes_or_no_option_types[1][1] = true;
+  //     statusType = yes_or_no_option_types[0][0];
+  //   }
+  //   if (index == 1) {
+  //     yes_or_no_option_types[1][1] = false;
+  //     yes_or_no_option_types[0][1] = true;
+  //     statusType = yes_or_no_option_types[1][0];
+  //   }
+  //   notifyListeners();
+  //   return statusType;
+  // }
 
   static List privacyType = [
     ['Friends', false],
@@ -144,8 +144,8 @@ class PrivacySettingViewModel extends BaseViewModel {
       data: connectionRequestOption,
       barrierDismissible: true,
     );
-    _connectionRequestOption =
-        select_yes_or_no(response?.data, connectionRequestOption);
+    _connectionRequestOption = response!.data.toString();
+    notifyListeners();
   }
 
   void whoCanMessageMe(title) async {
@@ -210,8 +210,8 @@ class PrivacySettingViewModel extends BaseViewModel {
       data: conductingSessionOption,
       barrierDismissible: true,
     );
-    _conductingSessionOption =
-        select_yes_or_no(response?.data, _conductingSessionOption);
+    _conductingSessionOption = response!.data.toString();
+    notifyListeners();
   }
 
   void quizzesAndDebateInvite(String title) async {
@@ -221,8 +221,8 @@ class PrivacySettingViewModel extends BaseViewModel {
       data: quizzesAndDebatesOption,
       barrierDismissible: true,
     );
-    _quizzesAndDebatesOption =
-        select_yes_or_no(response?.data, _quizzesAndDebatesOption);
+    _quizzesAndDebatesOption = response!.data.toString();
+    notifyListeners();
   }
 
   void interestInvites(String title) async {
@@ -232,7 +232,8 @@ class PrivacySettingViewModel extends BaseViewModel {
       data: interestsOption,
       barrierDismissible: true,
     );
-    _interestsOption = select_yes_or_no(response?.data, _interestsOption);
+    _interestsOption = response!.data.toString();
+    notifyListeners();
   }
 
   void sessionsInvite(String title) async {
@@ -242,8 +243,8 @@ class PrivacySettingViewModel extends BaseViewModel {
       data: sessionsInvitationOption,
       barrierDismissible: true,
     );
-    _sessionsInvitationOption =
-        select_yes_or_no(response?.data, _sessionsInvitationOption);
+    _sessionsInvitationOption = response!.data.toString();
+    notifyListeners();
   }
 
   void institutionInvites(String title) async {
@@ -253,8 +254,8 @@ class PrivacySettingViewModel extends BaseViewModel {
       data: insttutionsInvitationOption,
       barrierDismissible: true,
     );
-    _insttutionsInvitationOption =
-        select_yes_or_no(response?.data, _insttutionsInvitationOption);
+    _insttutionsInvitationOption = response!.data.toString();
+    notifyListeners();
   }
 
   void organizationInvites(String title) async {
@@ -264,7 +265,7 @@ class PrivacySettingViewModel extends BaseViewModel {
       data: organizationInvitationOption,
       barrierDismissible: true,
     );
-    _organizationInvitationOption =
-        select_yes_or_no(response?.data, _organizationInvitationOption);
+    _organizationInvitationOption = response!.data.toString();
+    notifyListeners();
   }
 }
