@@ -82,17 +82,16 @@ class _NoyesDialog extends StatelessWidget {
               //             ),
               //           ]),
               //         )).toList()
-              test_class(
+              OptionTypeSelector(
                 request: request,
                 completer: completer,
                 type: "Yes",
               ),
-              test_class(
+              OptionTypeSelector(
                 completer: completer,
                 request: request,
                 type: "No",
-              )
-
+              ),
               // Row(children: [
               //   Text('NO'),
               //   GestureDetector(
@@ -240,12 +239,12 @@ class PrivacyTypeIcon extends StatelessWidget {
   }
 }
 
-class test_class extends StatelessWidget {
+class OptionTypeSelector extends StatelessWidget {
   final Function(DialogResponse) completer;
   final DialogRequest request;
   final String type;
 
-  const test_class(
+  const OptionTypeSelector(
       {Key? key,
       required this.completer,
       required this.request,

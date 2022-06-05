@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:luneblaze_app/app/app.locator.dart';
 import 'package:luneblaze_app/app/app.router.dart';
 import 'package:stacked/stacked.dart';
@@ -265,7 +267,10 @@ class PrivacySettingViewModel extends BaseViewModel {
       data: organizationInvitationOption,
       barrierDismissible: true,
     );
+
     _organizationInvitationOption = response!.data.toString();
     notifyListeners();
+
+    log(response.toString());
   }
 }
