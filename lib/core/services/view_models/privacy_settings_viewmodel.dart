@@ -1,4 +1,3 @@
-import 'package:luneblaze_app/UIs/views/blocked_users_view.dart';
 import 'package:luneblaze_app/app/app.locator.dart';
 import 'package:luneblaze_app/app/app.router.dart';
 import 'package:stacked/stacked.dart';

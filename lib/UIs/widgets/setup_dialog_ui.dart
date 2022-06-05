@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:luneblaze_app/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -9,6 +11,7 @@ enum DialogType { basic, form, no_yes }
 void setupDialogUi() {
   final dialogService = locator<DialogService>();
 
+  final model = PrivacySettingViewModel;
   final builders = {
     DialogType.basic: (context, sheetRequest, completer) =>
         _BasicDialog(request: sheetRequest, completer: completer),
@@ -29,6 +32,8 @@ class _NoyesDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log(request.data.toString());
+
     return Dialog(
       child: Padding(
         padding: EdgeInsets.all(10),
@@ -40,43 +45,93 @@ class _NoyesDialog extends StatelessWidget {
               Container(
                   margin: const EdgeInsets.symmetric(vertical: 16),
                   child: Text(request.title ?? 'This is a title')),
-              ...List.generate(
-                  2,
-                  (index) => Container(
-                        margin: const EdgeInsets.only(bottom: 20),
-                        child: Row(children: [
-                          Text(
-                            PrivacySettingViewModel
-                                .yes_or_no_option_types[index][0],
-                          ),
-                          Spacer(),
-                          GestureDetector(
-                            onTap: () => completer(DialogResponse(data: index)),
-                            child: PrivacyTypeIcon(
-                              request: request,
-                              index: index,
-                              privacyIconChild: PrivacySettingViewModel
-                                          .yes_or_no_option_types[index][0] ==
-                                      request.data
-                                  ? Icon(
-                                      Icons.check,
-                                      color: Colors.white,
-                                    )
-                                  : null,
-                              privacyIconColorDecoration: BoxDecoration(
-                                color: PrivacySettingViewModel
-                                            .yes_or_no_option_types[index][0] ==
-                                        request.data
-                                    ? Colors.teal
-                                    : null,
-                                border:
-                                    Border.all(width: 1, color: Colors.grey),
-                                borderRadius: BorderRadius.circular(26),
-                              ),
-                            ),
-                          ),
-                        ]),
-                      )).toList()
+              // ...List.generate(
+              //     2,
+              //     (index) => Container(
+              //           margin: const EdgeInsets.only(bottom: 20),
+              //           child: Row(children: [
+              //             Text(
+              //               PrivacySettingViewModel
+              //                   .yes_or_no_option_types[index][0],
+              //             ),
+              //             Spacer(),
+              //             GestureDetector(
+              //               onTap: () => completer(DialogResponse(data: index)),
+              //               child: PrivacyTypeIcon(
+              //                 request: request,
+              //                 index: index,
+              //                 privacyIconChild: PrivacySettingViewModel
+              //                             .yes_or_no_option_types[index][0] ==
+              //                         request.data
+              //                     ? Icon(
+              //                         Icons.check,
+              //                         color: Colors.white,
+              //                       )
+              //                     : null,
+              //                 privacyIconColorDecoration: BoxDecoration(
+              //                   color: PrivacySettingViewModel
+              //                               .yes_or_no_option_types[index][0] ==
+              //                           request.data
+              //                       ? Colors.teal
+              //                       : null,
+              //                   border:
+              //                       Border.all(width: 1, color: Colors.grey),
+              //                   borderRadius: BorderRadius.circular(26),
+              //                 ),
+              //               ),
+              //             ),
+              //           ]),
+              //         )).toList()
+              test_class(
+                request: request,
+                completer: completer,
+                type: "Yes",
+              ),
+              test_class(
+                completer: completer,
+                request: request,
+                type: "No",
+              )
+
+              // Row(children: [
+              //   Text('NO'),
+              //   GestureDetector(
+              //     onTap: () => completer(DialogResponse(data: 'NO')),
+              //     child: Container(
+              //       decoration: BoxDecoration(color: Colors.red),
+              //       height: 28,
+              //       width: 28,
+              //       child: request.data.toString() == "NO"
+              //           ? Icon(
+              //               Icons.check,
+              //               color: Colors.white,
+              //             )
+              //           : null,
+              //       //   decoration:  ,
+              //     ),
+              //     // PrivacyTypeIcon(
+              //     //   request: request,
+              //     //   index: index,
+              //     //   privacyIconChild: PrivacySettingViewModel
+              //     //               .yes_or_no_option_types[index][0] ==
+              //     //           request.data
+              //     //       ? Icon(
+              //     //           Icons.check,
+              //     //           color: Colors.white,
+              //     //         )
+              //     //       : null,
+              //     //   privacyIconColorDecoration: BoxDecoration(
+              //     //     color: PrivacySettingViewModel
+              //     //                 .yes_or_no_option_types[index][0] ==
+              //     //             request.data
+              //     //         ? Colors.teal
+              //     //         : null,
+              //     //     border: Border.all(width: 1, color: Colors.grey),
+              //     //     borderRadius: BorderRadius.circular(26),
+              //     //   ),
+              //     // ),
+              //   ),
+              // ]),
             ],
           ),
         ),
@@ -130,12 +185,10 @@ class _FormDialog extends StatelessWidget {
                         child: Column(
                           children: [
                             PrivacyTypeIcon(
-                              request: request,
-                              index: index,
                               privacyIconChild: PrivacySettingViewModel
                                           .privacyType[index][0] ==
                                       request.data
-                                  ? Icon(
+                                  ? const Icon(
                                       Icons.check,
                                       color: Colors.white,
                                     )
@@ -169,14 +222,10 @@ class _FormDialog extends StatelessWidget {
 class PrivacyTypeIcon extends StatelessWidget {
   const PrivacyTypeIcon({
     Key? key,
-    required this.request,
-    required this.index,
     required this.privacyIconChild,
     required this.privacyIconColorDecoration,
   }) : super(key: key);
 
-  final DialogRequest request;
-  final int index;
   final Decoration privacyIconColorDecoration;
   final Icon? privacyIconChild;
 
@@ -187,6 +236,50 @@ class PrivacyTypeIcon extends StatelessWidget {
       width: 28,
       child: privacyIconChild,
       decoration: privacyIconColorDecoration,
+    );
+  }
+}
+
+class test_class extends StatelessWidget {
+  final Function(DialogResponse) completer;
+  final DialogRequest request;
+  final String type;
+
+  const test_class(
+      {Key? key,
+      required this.completer,
+      required this.request,
+      required this.type})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(bottom: 20),
+      child: Row(children: [
+        Text(type),
+        Spacer(),
+        GestureDetector(
+          onTap: () => completer(DialogResponse(data: type)),
+          child: Column(
+            children: [
+              PrivacyTypeIcon(
+                privacyIconChild: request.data == type
+                    ? Icon(
+                        Icons.check,
+                        color: Colors.white,
+                      )
+                    : null,
+                privacyIconColorDecoration: BoxDecoration(
+                  color: type == request.data ? Colors.teal : null,
+                  border: Border.all(width: 1, color: Colors.grey),
+                  borderRadius: BorderRadius.circular(26),
+                ),
+              ),
+            ],
+          ),
+        )
+      ]),
     );
   }
 }
