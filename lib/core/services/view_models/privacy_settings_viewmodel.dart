@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:luneblaze_app/app/app.locator.dart';
 import 'package:luneblaze_app/app/app.router.dart';
 import 'package:stacked/stacked.dart';
@@ -26,10 +25,6 @@ class PrivacySettingViewModel extends BaseViewModel {
     await _navigation.navigateTo(Routes.blockedUsersView);
   }
 
-  static List yes_or_no_option_types = [
-    ['Yes', true],
-    ['No ', false],
-  ];
   String _connectionRequestOption = 'Yes';
   String get connectionRequestOption => _connectionRequestOption;
   String _conductingSessionOption = 'Yes';
@@ -44,27 +39,6 @@ class PrivacySettingViewModel extends BaseViewModel {
   String get insttutionsInvitationOption => _insttutionsInvitationOption;
   String _organizationInvitationOption = 'Yes';
   String get organizationInvitationOption => _organizationInvitationOption;
-
-  // String select_yes_or_no(index, statusType) {
-  //   if (index == 0) {
-  //     yes_or_no_option_types[0][1] = true;
-  //     yes_or_no_option_types[1][1] = true;
-  //     statusType = yes_or_no_option_types[0][0];
-  //   }
-  //   if (index == 1) {
-  //     yes_or_no_option_types[1][1] = false;
-  //     yes_or_no_option_types[0][1] = true;
-  //     statusType = yes_or_no_option_types[1][0];
-  //   }
-  //   notifyListeners();
-  //   return statusType;
-  // }
-
-  static List privacyType = [
-    ['Friends', false],
-    ['Public', true],
-    ['Me', false]
-  ];
 
   String _pointsPrivacyStatus = 'Public';
   String get pointsPrivacyStatus => _pointsPrivacyStatus;
@@ -83,29 +57,6 @@ class PrivacySettingViewModel extends BaseViewModel {
   String _activityPrivacyStatus = 'Public';
   String get activityPrivacyStatus => _activityPrivacyStatus;
 
-  String selectPrivacyType(int index, String statusType) {
-    if (index == 0) {
-      privacyType[index][1] = true;
-      privacyType[1][1] = false;
-      privacyType[2][1] = false;
-      statusType = privacyType[0][0];
-    }
-    if (index == 1) {
-      privacyType[index][1] = true;
-      privacyType[0][1] = false;
-      privacyType[2][1] = false;
-      statusType = privacyType[1][0];
-    }
-    if (index == 2) {
-      privacyType[index][1] = true;
-      privacyType[0][1] = false;
-      privacyType[1][1] = false;
-      statusType = privacyType[2][0];
-    }
-    notifyListeners();
-    return statusType;
-  }
-
   void whoCanSeePoints(title) async {
     final response = await _dialogService.showCustomDialog(
         barrierDismissible: true,
@@ -113,8 +64,8 @@ class PrivacySettingViewModel extends BaseViewModel {
         title: title,
         data: pointsPrivacyStatus,
         description: _pointsPrivacyStatus);
-    _pointsPrivacyStatus =
-        selectPrivacyType(response?.data, pointsPrivacyStatus);
+    _pointsPrivacyStatus = response!.data.toString();
+    notifyListeners();
   }
 
   void whoCanSeeFriends(title) async {
@@ -124,8 +75,8 @@ class PrivacySettingViewModel extends BaseViewModel {
       data: friendsPrivacyStatus,
       title: title,
     );
-    _friendsPrivacyStatus =
-        selectPrivacyType(response!.data, friendsPrivacyStatus);
+    _friendsPrivacyStatus = response!.data.toString();
+    notifyListeners();
   }
 
   void whoCanSeeContents(title) async {
@@ -135,8 +86,8 @@ class PrivacySettingViewModel extends BaseViewModel {
       data: contentsPrivacyStatus,
       title: title,
     );
-    _contentsPrivacyStatus =
-        selectPrivacyType(response?.data, contentsPrivacyStatus);
+    _contentsPrivacyStatus = response!.data.toString();
+    notifyListeners();
   }
 
   void receiveConnectionRequest(String title) async {
@@ -157,8 +108,8 @@ class PrivacySettingViewModel extends BaseViewModel {
       data: messagePrivacyStatus,
       title: title,
     );
-    _messagePrivacyStatus =
-        selectPrivacyType(response?.data, messagePrivacyStatus);
+    _messagePrivacyStatus = response!.data.toString();
+    notifyListeners();
   }
 
   void whoCanSeeChallenges(title) async {
@@ -168,8 +119,8 @@ class PrivacySettingViewModel extends BaseViewModel {
       data: challengesPrivacyStatus,
       title: title,
     );
-    _challengesPrivacyStatus =
-        selectPrivacyType(response?.data, challengesPrivacyStatus);
+    _challengesPrivacyStatus = response!.data.toString();
+    notifyListeners();
   }
 
   void whoCanSeeChoices(title) async {
@@ -179,8 +130,8 @@ class PrivacySettingViewModel extends BaseViewModel {
       data: choicesPrivacyStatus,
       title: title,
     );
-    _choicesPrivacyStatus =
-        selectPrivacyType(response?.data, choicesPrivacyStatus);
+    _choicesPrivacyStatus = response!.data.toString();
+    notifyListeners();
   }
 
   void whoCanSeeSessions(title) async {
@@ -190,8 +141,8 @@ class PrivacySettingViewModel extends BaseViewModel {
       data: sessionsPrivacyStatus,
       title: title,
     );
-    _sessionsPrivacyStatus =
-        selectPrivacyType(response?.data, sessionsPrivacyStatus);
+    _sessionsPrivacyStatus = response!.data.toString();
+    notifyListeners();
   }
 
   void whoCanSeeActivity(title) async {
@@ -201,8 +152,8 @@ class PrivacySettingViewModel extends BaseViewModel {
       data: activityPrivacyStatus,
       title: title,
     );
-    _activityPrivacyStatus =
-        selectPrivacyType(response!.data, activityPrivacyStatus);
+    _activityPrivacyStatus = response!.data.toString();
+    notifyListeners();
   }
 
   void conductingSessionInvite(String title) async {
