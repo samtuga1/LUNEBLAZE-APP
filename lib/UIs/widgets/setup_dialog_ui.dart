@@ -135,7 +135,7 @@ class _FormDialog extends StatelessWidget {
                               privacyIconChild: PrivacySettingViewModel
                                           .privacyType[index][0] ==
                                       request.data
-                                  ? Icon(
+                                  ? const Icon(
                                       Icons.check,
                                       color: Colors.white,
                                     )
