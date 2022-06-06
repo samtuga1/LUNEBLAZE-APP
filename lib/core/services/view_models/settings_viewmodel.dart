@@ -20,9 +20,10 @@ class SettingsViewModel extends BaseViewModel {
   void navigateToManagePage() {
     // Moves to manaage screen
   }
-  void navigateToInternship() {
-    // Moves to internship screen
+  void navigateToGetNotified() {
+    navigation.navigateTo(Routes.getNotifiedView);
   }
+
   void navigateToAbout() {
     // Moves to about screen
   }
