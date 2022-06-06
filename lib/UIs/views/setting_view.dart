@@ -50,7 +50,7 @@ class SettingsView extends StatelessWidget {
                     icon: AppIcons.doc,
                     title: 'Get notified',
                     subtitle: 'Apply for new internship or job',
-                    onTap: model.navigateToInternship,
+                    onTap: model.navigateToGetNotified,
                   ),
                 ]).toList(),
                 HeaderTitle(title: 'ABOUT'),
