@@ -135,6 +135,7 @@ class PrivacySettingsView extends StatelessWidget {
               Divider(
                 thickness: 4,
               ),
+              // View blocked contacts
               Padding(
                 padding: const EdgeInsets.only(
                     left: 20.0, top: 12, bottom: 12, right: 7),
@@ -167,9 +168,11 @@ class PrivacySettingsView extends StatelessWidget {
                   ),
                 ),
               ),
+              // --------------------------------------------------
               Divider(
                 thickness: 4,
               ),
+              // Two stop verification switch
               Row(
                 children: [
                   Container(
@@ -187,7 +190,8 @@ class PrivacySettingsView extends StatelessWidget {
                         model.switchTwoStepVerification(value),
                   ),
                 ],
-              )
+              ),
+              // --------------------------------------
             ]),
           )),
     );
