@@ -58,6 +58,7 @@ class PrivacySettingViewModel extends BaseViewModel {
   String get activityPrivacyStatus => _activityPrivacyStatus;
 
   void whoCanSeePoints(title) async {
+    // This is showing dialog for points options
     final response = await _dialogService.showCustomDialog(
         barrierDismissible: true,
         variant: DialogType.form,
@@ -69,6 +70,7 @@ class PrivacySettingViewModel extends BaseViewModel {
   }
 
   void whoCanSeeFriends(title) async {
+    // This is showing dialog for who can see friends options
     final response = await _dialogService.showCustomDialog(
       barrierDismissible: true,
       variant: DialogType.form,
@@ -80,6 +82,7 @@ class PrivacySettingViewModel extends BaseViewModel {
   }
 
   void whoCanSeeContents(title) async {
+    // This is showing dialog for who can see contents options
     final response = await _dialogService.showCustomDialog(
       barrierDismissible: true,
       variant: DialogType.form,
@@ -91,6 +94,7 @@ class PrivacySettingViewModel extends BaseViewModel {
   }
 
   void receiveConnectionRequest(String title) async {
+    // This is showing dialog for recieve connections options
     final response = await _dialogService.showCustomDialog(
       variant: DialogType.no_yes,
       title: title,
@@ -102,6 +106,7 @@ class PrivacySettingViewModel extends BaseViewModel {
   }
 
   void whoCanMessageMe(title) async {
+    // This is showing dialog for who can message me options
     final response = await _dialogService.showCustomDialog(
       barrierDismissible: true,
       variant: DialogType.form,
@@ -113,6 +118,7 @@ class PrivacySettingViewModel extends BaseViewModel {
   }
 
   void whoCanSeeChallenges(title) async {
+    // This is showing dialog for who can see challenges options
     final response = await _dialogService.showCustomDialog(
       barrierDismissible: true,
       variant: DialogType.form,
@@ -124,6 +130,7 @@ class PrivacySettingViewModel extends BaseViewModel {
   }
 
   void whoCanSeeChoices(title) async {
+    // This is showing dialog for who can see choices options
     final response = await _dialogService.showCustomDialog(
       barrierDismissible: true,
       variant: DialogType.form,
@@ -135,6 +142,7 @@ class PrivacySettingViewModel extends BaseViewModel {
   }
 
   void whoCanSeeSessions(title) async {
+    // This is showing dialog for who can see sessions options
     final response = await _dialogService.showCustomDialog(
       barrierDismissible: true,
       variant: DialogType.form,
@@ -146,6 +154,7 @@ class PrivacySettingViewModel extends BaseViewModel {
   }
 
   void whoCanSeeActivity(title) async {
+    // This is showing dialog for who can see activity options
     final response = await _dialogService.showCustomDialog(
       barrierDismissible: true,
       variant: DialogType.form,
@@ -157,6 +166,7 @@ class PrivacySettingViewModel extends BaseViewModel {
   }
 
   void conductingSessionInvite(String title) async {
+    // This is showing dialog for conducting session invite options
     final response = await _dialogService.showCustomDialog(
       variant: DialogType.no_yes,
       title: title,
@@ -168,6 +178,7 @@ class PrivacySettingViewModel extends BaseViewModel {
   }
 
   void quizzesAndDebateInvite(String title) async {
+    // This is showing dialog for quizzues and debate invites options
     final response = await _dialogService.showCustomDialog(
       variant: DialogType.no_yes,
       title: title,
@@ -179,6 +190,7 @@ class PrivacySettingViewModel extends BaseViewModel {
   }
 
   void interestInvites(String title) async {
+    // This is showing dialog for interest options
     final response = await _dialogService.showCustomDialog(
       variant: DialogType.no_yes,
       title: title,
@@ -190,6 +202,7 @@ class PrivacySettingViewModel extends BaseViewModel {
   }
 
   void sessionsInvite(String title) async {
+    // This is showing dialog for session invites options
     final response = await _dialogService.showCustomDialog(
       variant: DialogType.no_yes,
       title: title,
@@ -201,6 +214,7 @@ class PrivacySettingViewModel extends BaseViewModel {
   }
 
   void institutionInvites(String title) async {
+    // This is showing dialog for institutions invites options
     final response = await _dialogService.showCustomDialog(
       variant: DialogType.no_yes,
       title: title,
@@ -212,6 +226,7 @@ class PrivacySettingViewModel extends BaseViewModel {
   }
 
   void organizationInvites(String title) async {
+    // This is showing dialog for organizing invites options
     final response = await _dialogService.showCustomDialog(
       variant: DialogType.no_yes,
       title: title,
