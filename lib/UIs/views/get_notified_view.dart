@@ -33,6 +33,7 @@ class GetNotifiedView extends StatelessWidget {
                             child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
+                                  // -------------------- Start of course list-----------------
                                   Text('Course'),
                                   const SizedBox(
                                     height: 3,
@@ -40,42 +41,29 @@ class GetNotifiedView extends StatelessWidget {
                                   DetailSelector(
                                     popUpButton: PopupMenuButton(
                                       icon: Icon(Icons.arrow_downward),
-                                      onSelected: (dynamic value) {
-                                        model.selectCourseOption(value);
+                                      onSelected: (dynamic selected_option) {
+                                        model.selectCourseOption(
+                                            selected_option);
                                       },
-                                      itemBuilder: (_) => [
-                                        PopupMenuItem(
+                                      itemBuilder: (_) => List.generate(
+                                          model.course_choice_options.length,
+                                          (index) {
+                                        return PopupMenuItem(
                                           child: Text(
-                                            model.course_choice_options[0],
+                                            model.course_choice_options[index],
                                           ),
-                                          value: model.course_choice_options[0],
-                                        ),
-                                        PopupMenuItem(
-                                          child: Text(
-                                            model.course_choice_options[1],
-                                          ),
-                                          value: model.course_choice_options[1],
-                                        ),
-                                        PopupMenuItem(
-                                          child: Text(
-                                            model.course_choice_options[2],
-                                          ),
-                                          value: model.course_choice_options[2],
-                                        ),
-                                        PopupMenuItem(
-                                          child: Text(
-                                            model.course_choice_options[3],
-                                          ),
-                                          value: model.course_choice_options[3],
-                                        )
-                                      ],
+                                          value: model
+                                              .course_choice_options[index],
+                                        );
+                                      }).toList(),
                                     ),
-                                    currentValue:
+                                    currentValue: model.selected_course ??
                                         model.course_choice_options[0],
                                   ),
                                   const SizedBox(
                                     height: 20,
                                   ),
+                                  // -------------------- End of course list-----------------
                                   Row(
                                     children: [
                                       Flexible(
@@ -83,6 +71,7 @@ class GetNotifiedView extends StatelessWidget {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
+                                            // -------------------- Start of Study list-----------------
                                             Text('Field Of Study'),
                                             DetailSelector(
                                               popUpButton: PopupMenuButton(
@@ -92,46 +81,26 @@ class GetNotifiedView extends StatelessWidget {
                                                   model
                                                       .selectStudyOption(value);
                                                 },
-                                                itemBuilder: (_) => [
-                                                  PopupMenuItem(
-                                                    child: SizedBox(
-                                                      child: Text(
-                                                        model.study_choice_options[
-                                                            0],
-                                                      ),
-                                                    ),
-                                                    value: model
-                                                        .study_choice_options[0],
-                                                  ),
-                                                  PopupMenuItem(
+                                                itemBuilder: (_) =>
+                                                    List.generate(
+                                                  model.study_choice_options
+                                                      .length,
+                                                  (index) => PopupMenuItem(
                                                     child: Text(
                                                       model.study_choice_options[
-                                                          1],
+                                                          index],
                                                     ),
                                                     value: model
-                                                        .study_choice_options[1],
+                                                            .study_choice_options[
+                                                        index],
                                                   ),
-                                                  PopupMenuItem(
-                                                    child: Text(
-                                                      model.study_choice_options[
-                                                          2],
-                                                    ),
-                                                    value: model
-                                                        .study_choice_options[2],
-                                                  ),
-                                                  PopupMenuItem(
-                                                    child: Text(
-                                                      model.study_choice_options[
-                                                          3],
-                                                    ),
-                                                    value: model
-                                                        .study_choice_options[3],
-                                                  )
-                                                ],
+                                                ).toList(),
                                               ),
-                                              currentValue:
+                                              currentValue: model
+                                                      .selected_study_option ??
                                                   model.study_choice_options[0],
                                             ),
+                                            // -------------------- End of study list-----------------
                                           ],
                                         ),
                                       ),
@@ -143,6 +112,7 @@ class GetNotifiedView extends StatelessWidget {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
+                                            // -------------------- Start of passing year list-----------------
                                             Text('Year of passing'),
                                             DetailSelector(
                                               popUpButton: PopupMenuButton(
@@ -151,46 +121,26 @@ class GetNotifiedView extends StatelessWidget {
                                                 onSelected: (dynamic value) {
                                                   model.selectYearOfPass(value);
                                                 },
-                                                itemBuilder: (_) => [
-                                                  PopupMenuItem(
-                                                    child: SizedBox(
-                                                      child: Text(
-                                                        model.year_passing_options[
-                                                            0],
-                                                      ),
-                                                    ),
-                                                    value: model
-                                                        .year_passing_options[0],
-                                                  ),
-                                                  PopupMenuItem(
+                                                itemBuilder: (_) =>
+                                                    List.generate(
+                                                  model.year_passing_options
+                                                      .length,
+                                                  (index) => PopupMenuItem(
                                                     child: Text(
                                                       model.year_passing_options[
-                                                          1],
+                                                          index],
                                                     ),
                                                     value: model
-                                                        .year_passing_options[1],
+                                                            .year_passing_options[
+                                                        index],
                                                   ),
-                                                  PopupMenuItem(
-                                                    child: Text(
-                                                      model.year_passing_options[
-                                                          2],
-                                                    ),
-                                                    value: model
-                                                        .year_passing_options[2],
-                                                  ),
-                                                  PopupMenuItem(
-                                                    child: Text(
-                                                      model.year_passing_options[
-                                                          3],
-                                                    ),
-                                                    value: model
-                                                        .year_passing_options[3],
-                                                  )
-                                                ],
+                                                ).toList(),
                                               ),
-                                              currentValue:
+                                              currentValue: model
+                                                      .selected_passing_year ??
                                                   model.year_passing_options[0],
                                             ),
+                                            // -------------------- End of passing year list-----------------
                                           ],
                                         ),
                                       ),
@@ -206,6 +156,7 @@ class GetNotifiedView extends StatelessWidget {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
+                                            // -------------------- Start of percentage choice list-----------------
                                             Text('Percentage'),
                                             DetailSelector(
                                               popUpButton: PopupMenuButton(
@@ -215,46 +166,28 @@ class GetNotifiedView extends StatelessWidget {
                                                   model.selectpercentageOption(
                                                       value);
                                                 },
-                                                itemBuilder: (_) => [
-                                                  PopupMenuItem(
-                                                    child: SizedBox(
-                                                      child: Text(
-                                                        model.percentage_choice_options[
-                                                            0],
-                                                      ),
-                                                    ),
-                                                    value: model
-                                                        .percentage_choice_options[0],
-                                                  ),
-                                                  PopupMenuItem(
+                                                itemBuilder: (_) =>
+                                                    List.generate(
+                                                  model
+                                                      .percentage_choice_options
+                                                      .length,
+                                                  (index) => PopupMenuItem(
                                                     child: Text(
                                                       model.percentage_choice_options[
-                                                          1],
+                                                          index],
                                                     ),
                                                     value: model
-                                                        .percentage_choice_options[1],
+                                                            .percentage_choice_options[
+                                                        index],
                                                   ),
-                                                  PopupMenuItem(
-                                                    child: Text(
-                                                      model.percentage_choice_options[
-                                                          2],
-                                                    ),
-                                                    value: model
-                                                        .percentage_choice_options[2],
-                                                  ),
-                                                  PopupMenuItem(
-                                                    child: Text(
-                                                      model.percentage_choice_options[
-                                                          3],
-                                                    ),
-                                                    value: model
-                                                        .percentage_choice_options[3],
-                                                  )
-                                                ],
+                                                ).toList(),
                                               ),
                                               currentValue: model
-                                                  .percentage_choice_options[0],
+                                                      .selected_percentage_choice ??
+                                                  model.percentage_choice_options[
+                                                      0],
                                             ),
+                                            // -------------------- End of percentage choice list-----------------
                                           ],
                                         ),
                                       ),
@@ -266,6 +199,7 @@ class GetNotifiedView extends StatelessWidget {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
+                                            // -------------------- Start of starting year list-----------------
                                             Text('Year of start'),
                                             DetailSelector(
                                               popUpButton: PopupMenuButton(
@@ -276,46 +210,27 @@ class GetNotifiedView extends StatelessWidget {
                                                       .selectStartingYearOption(
                                                           value);
                                                 },
-                                                itemBuilder: (_) => [
-                                                  PopupMenuItem(
-                                                    child: SizedBox(
-                                                      child: Text(
-                                                        model.starting_year_options[
-                                                            0],
-                                                      ),
-                                                    ),
-                                                    value: model
-                                                        .starting_year_options[0],
-                                                  ),
-                                                  PopupMenuItem(
+                                                itemBuilder: (_) =>
+                                                    List.generate(
+                                                  model.starting_year_options
+                                                      .length,
+                                                  (index) => PopupMenuItem(
                                                     child: Text(
                                                       model.starting_year_options[
-                                                          1],
+                                                          index],
                                                     ),
                                                     value: model
-                                                        .starting_year_options[1],
+                                                            .starting_year_options[
+                                                        index],
                                                   ),
-                                                  PopupMenuItem(
-                                                    child: Text(
-                                                      model.starting_year_options[
-                                                          2],
-                                                    ),
-                                                    value: model
-                                                        .starting_year_options[2],
-                                                  ),
-                                                  PopupMenuItem(
-                                                    child: Text(
-                                                      model.starting_year_options[
-                                                          3],
-                                                    ),
-                                                    value: model
-                                                        .starting_year_options[3],
-                                                  )
-                                                ],
+                                                ).toList(),
                                               ),
                                               currentValue: model
-                                                  .starting_year_options[0],
+                                                      .selected_starting_year_option ??
+                                                  model
+                                                      .starting_year_options[0],
                                             ),
+                                            // -------------------- End of starting year list-----------------
                                           ],
                                         ),
                                       ),
@@ -324,6 +239,7 @@ class GetNotifiedView extends StatelessWidget {
                                 ]),
                           ),
                         ),
+                        // ------------------ Apply for internship switch ---------------------
                         Container(
                           color: Colors.white,
                           padding: const EdgeInsets.symmetric(
@@ -341,9 +257,11 @@ class GetNotifiedView extends StatelessWidget {
                             ],
                           ),
                         ),
+                        // --------------------------------------------------------
                         const SizedBox(
                           height: 8,
                         ),
+                        // ----------- Apply for job switch ----------------------
                         Container(
                           color: Colors.white,
                           padding: const EdgeInsets.symmetric(
@@ -361,12 +279,14 @@ class GetNotifiedView extends StatelessWidget {
                             ],
                           ),
                         ),
+                        // ------------------------------------------------------------
                         const SizedBox(
                           height: 55,
                         ),
                       ],
                     ),
                   ),
+                  // ------------------ Done button below -------------------------
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: Container(
@@ -388,6 +308,7 @@ class GetNotifiedView extends StatelessWidget {
                       ),
                     ),
                   )
+                  // --------------------------------------------------
                 ]),
               ),
             ));
