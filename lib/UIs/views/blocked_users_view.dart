@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:luneblaze_app/UIs/widgets/global_appbar.dart';
 import 'package:stacked/stacked.dart';
-import '../../core/services/view_models/blocked_users_viewmodel.dart';
+import '../../core/view_models/blocked_users_viewmodel.dart';
 
 class BlockedUsersView extends StatelessWidget {
   const BlockedUsersView({Key? key}) : super(key: key);
