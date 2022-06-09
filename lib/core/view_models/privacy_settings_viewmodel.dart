@@ -107,7 +107,7 @@ class PrivacySettingViewModel extends BaseViewModel {
       loadingContents = false;
       notifyListeners();
     } catch (error) {
-      // log(e.toString());
+      log(error.toString());
     }
   }
 
