@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:luneblaze_app/UIs/widgets/global_appbar.dart';
 import 'package:stacked/stacked.dart';
 import 'package:luneblaze_app/constants/icons.dart';
-import '../../core/services/view_models/settings_viewmodel.dart';
+import '../../core/view_models/settings_viewmodel.dart';
 import '../widgets/header_title.dart';
 import '../widgets/list_tile.dart';
 
