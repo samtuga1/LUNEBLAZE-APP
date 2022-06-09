@@ -41,12 +41,12 @@ class _NoyesDialog extends StatelessWidget {
               OptionTypeSelector(
                 request: request,
                 completer: completer,
-                type: "Yes",
+                type: "yes",
               ),
               OptionTypeSelector(
                 completer: completer,
                 request: request,
-                type: "No",
+                type: "no",
               ),
             ],
           ),
@@ -89,17 +89,17 @@ class _FormDialog extends StatelessWidget {
               OptionTypeSelector(
                 request: request,
                 completer: completer,
-                type: "Friends",
+                type: "friends",
               ),
               OptionTypeSelector(
                 completer: completer,
                 request: request,
-                type: "Public",
+                type: "public",
               ),
               OptionTypeSelector(
                 completer: completer,
                 request: request,
-                type: "Me",
+                type: "me",
               ),
             ],
           ),
