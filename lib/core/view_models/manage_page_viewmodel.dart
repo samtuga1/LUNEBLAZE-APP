@@ -7,6 +7,7 @@ class ManagePageViewModel extends BaseViewModel {
   final _navigation = NavigationService();
   bool loading = false;
 
+// Fake loading indication function
   Future<void> fakeDelay() async {
     loading = true;
     Future.delayed(Duration(milliseconds: 900), () {
