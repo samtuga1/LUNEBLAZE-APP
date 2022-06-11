@@ -25,6 +25,7 @@ class ManagePageView extends StatelessWidget {
                   const Divider(
                     thickness: 4,
                   ),
+                  // Institution tile
                   GestureDetector(
                     child: Container(
                       padding: const EdgeInsets.symmetric(
@@ -54,9 +55,11 @@ class ManagePageView extends StatelessWidget {
                       ),
                     ),
                   ),
+                  // ------End of insttution tile ---------
                   const Divider(
                     thickness: 4,
                   ),
+                  // Organization tile
                   GestureDetector(
                     child: Container(
                       padding: const EdgeInsets.symmetric(
@@ -86,6 +89,8 @@ class ManagePageView extends StatelessWidget {
                       ),
                     ),
                   ),
+                  // ------- End of organization tile ---------
+                  // List of institutions and organizations
                   Expanded(
                       child: SingleChildScrollView(
                     child: Column(children: [
@@ -100,6 +105,7 @@ class ManagePageView extends StatelessWidget {
                       ),
                       const Divider(),
                       if (model.viewInstitutes)
+                        // List of institutions
                         ...model.institutions
                             .map((institution) => InstitutesOrganizationTiles(
                                   title: institution.title,
@@ -116,6 +122,7 @@ class ManagePageView extends StatelessWidget {
                       ),
                       const Divider(),
                       if (model.viewOrganisation)
+                        // List of organizations
                         ...model.organization
                             .map((organization) => InstitutesOrganizationTiles(
                                   title: organization.title,
