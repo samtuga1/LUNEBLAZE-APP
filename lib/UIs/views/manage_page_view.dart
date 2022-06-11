@@ -103,7 +103,9 @@ class ManagePageView extends StatelessWidget {
                           onPressed: model.viewInstitutesPressed,
                         ),
                       ),
-                      const Divider(),
+                      const Divider(
+                        indent: 15,
+                      ),
                       if (model.viewInstitutes)
                         // List of institutions
                         ...model.institutions
@@ -120,7 +122,9 @@ class ManagePageView extends StatelessWidget {
                                 : Icons.arrow_forward_ios),
                             onPressed: model.viewviewOrganisationPressed),
                       ),
-                      const Divider(),
+                      const Divider(
+                        indent: 15,
+                      ),
                       if (model.viewOrganisation)
                         // List of organizations
                         ...model.organization
