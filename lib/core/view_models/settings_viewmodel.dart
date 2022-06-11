@@ -18,8 +18,9 @@ class SettingsViewModel extends BaseViewModel {
   }
 
   void navigateToManagePage() {
-    // Moves to manaage screen
+    navigation.navigateTo(Routes.managePageView);
   }
+
   void navigateToGetNotified() {
     navigation.navigateTo(Routes.getNotifiedView);
   }
