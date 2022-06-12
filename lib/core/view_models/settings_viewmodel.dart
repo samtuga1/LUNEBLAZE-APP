@@ -14,7 +14,7 @@ class SettingsViewModel extends BaseViewModel {
   }
 
   void navigateToCommunity() {
-    // Moves to community screen
+    navigation.navigateTo(Routes.manageCommunitiesView);
   }
 
   void navigateToManagePage() {
