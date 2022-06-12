@@ -1,5 +1,6 @@
 import 'package:luneblaze_app/UIs/views/blocked_users_view.dart';
 import 'package:luneblaze_app/UIs/views/get_notified_view.dart';
+import 'package:luneblaze_app/UIs/views/manage_communities_view.dart';
 import 'package:luneblaze_app/UIs/views/manage_page_view.dart';
 import 'package:luneblaze_app/UIs/views/privacy_settings_view.dart';
 import 'package:luneblaze_app/UIs/views/setting_view.dart';
@@ -14,6 +15,7 @@ import '../UIs/views/setting_view.dart';
     MaterialRoute(page: BlockedUsersView),
     MaterialRoute(page: GetNotifiedView),
     MaterialRoute(page: ManagePageView),
+    MaterialRoute(page: ManageCommunitiesView),
   ],
   dependencies: [
     LazySingleton(classType: NavigationService),
