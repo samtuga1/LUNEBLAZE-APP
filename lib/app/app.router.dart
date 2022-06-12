@@ -12,6 +12,7 @@ import 'package:stacked/stacked_annotations.dart';
 
 import '../UIs/views/blocked_users_view.dart';
 import '../UIs/views/get_notified_view.dart';
+import '../UIs/views/manage_communities_view.dart';
 import '../UIs/views/manage_page_view.dart';
 import '../UIs/views/privacy_settings_view.dart';
 import '../UIs/views/setting_view.dart';
@@ -22,12 +23,14 @@ class Routes {
   static const String blockedUsersView = '/blocked-users-view';
   static const String getNotifiedView = '/get-notified-view';
   static const String managePageView = '/manage-page-view';
+  static const String manageCommunitiesView = '/manage-communities-view';
   static const all = <String>{
     settingsView,
     privacySettingsView,
     blockedUsersView,
     getNotifiedView,
     managePageView,
+    manageCommunitiesView,
   };
 }
 
@@ -40,6 +43,7 @@ class StackedRouter extends RouterBase {
     RouteDef(Routes.blockedUsersView, page: BlockedUsersView),
     RouteDef(Routes.getNotifiedView, page: GetNotifiedView),
     RouteDef(Routes.managePageView, page: ManagePageView),
+    RouteDef(Routes.manageCommunitiesView, page: ManageCommunitiesView),
   ];
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
@@ -71,6 +75,12 @@ class StackedRouter extends RouterBase {
     ManagePageView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => const ManagePageView(),
+        settings: data,
+      );
+    },
+    ManageCommunitiesView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const ManageCommunitiesView(),
         settings: data,
       );
     },
