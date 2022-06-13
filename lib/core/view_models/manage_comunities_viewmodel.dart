@@ -1,3 +1,4 @@
+import 'package:luneblaze_app/app/app.router.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -20,6 +21,6 @@ class ManageCommunitiesViewModel extends BaseViewModel {
 
   // Navigate to create community
   void createCommunity() {
-    //
+    navigation.navigateTo(Routes.createCommunityView);
   }
 }
