@@ -6,6 +6,7 @@ import 'package:stacked_services/stacked_services.dart';
 
 void main() async {
   await setupLocator();
+  
   setupDialogUi();
   runApp(MyApp());
 }

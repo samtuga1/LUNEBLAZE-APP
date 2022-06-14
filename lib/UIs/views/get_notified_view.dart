@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:luneblaze_app/UIs/widgets/global_appbar.dart';
 import 'package:luneblaze_app/core/services/view_models/get_notified_viewmodel.dart';
 import 'package:stacked/stacked.dart';
-
+ 
 class GetNotifiedView extends StatelessWidget {
   const GetNotifiedView({Key? key}) : super(key: key);
 

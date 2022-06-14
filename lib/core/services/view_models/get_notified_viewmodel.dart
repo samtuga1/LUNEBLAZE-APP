@@ -2,7 +2,7 @@ import 'package:luneblaze_app/app/app.locator.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-class GetNotifiedViewModel extends BaseViewModel {
+class GetNotifiedViewModel extends BaseViewModel { 
   final _navigation = locator<NavigationService>();
   List<String> course_choice_options = ['Tech', 'BBA', 'BCA', 'Bcom'];
 
