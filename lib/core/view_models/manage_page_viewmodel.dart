@@ -1,3 +1,7 @@
+import 'dart:developer';
+import 'dart:ffi';
+
+import 'package:luneblaze_app/core/services/api_services.dart';
 import 'package:luneblaze_app/models/institute_model.dart';
 import 'package:luneblaze_app/models/organization_model.dart';
 import 'package:stacked/stacked.dart';
@@ -7,14 +11,14 @@ class ManagePageViewModel extends BaseViewModel {
   final _navigation = NavigationService();
   bool loading = false;
 
-// Fake loading indication function
-  Future<void> fakeDelay() async {
-    loading = true;
-    Future.delayed(Duration(milliseconds: 900), () {
-      loading = false;
-      notifyListeners();
-    });
-  }
+// // Fake loading indication function
+//   Future<void> fakeDelay() async {
+//     loading = true;
+//     Future.delayed(Duration(milliseconds: 900), () {
+//       loading = false;
+//       notifyListeners();
+//     });
+//   }
 
   bool viewInstitutes = false;
   bool viewOrganisation = false;
@@ -23,33 +27,59 @@ class ManagePageViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  List<InstituteModel> institutions = [
-    InstituteModel(
-      title: 'js Bose faridabad',
-      subtitle: 'Don\'t know shdudid',
-    ),
-    InstituteModel(
-      title: 'Test colledge',
-    ),
-    InstituteModel(
-      title: 'Learning Institute',
-      subtitle: 'Testing on the application',
-    ),
-  ];
+  List<InstituteModel> institutions = [];
 
-  List<OrganizationModel> organization = [
-    OrganizationModel(
-      title: 'Awakin',
-      subtitle: 'Learn to code',
-    ),
-    OrganizationModel(
-      title: 'Test is an organization',
-    ),
-    OrganizationModel(
-      title: 'Learning organization',
-      subtitle: 'Testing on the application',
-    ),
-  ];
+  List<OrganizationModel> organizations = [];
+
+  Future<void> fetch_organizations() async {
+    try {
+      final response = await api_services.create().postOrganizationsVenuesData({
+        'userId': '3',
+      });
+      List organizationList =
+          response.body['data']['organisation_data'].toList();
+      organizationList.forEach((organization) {
+        organizations.add(OrganizationModel(
+          title: organization['Name'],
+          subtitle: organization['Description'],
+          logo: organization['Logo'],
+        ));
+      });
+    } catch (error) {
+      log(error.toString());
+    }
+    notifyListeners();
+  }
+
+  Future<void> fetch_institutions() async {
+    try {
+      final response = await api_services.create().postOrganizationsVenuesData({
+        'userId': '3',
+      });
+      List institutionsList = response.body['data']['venue'].toList();
+      institutionsList.forEach((institution) {
+        institutions.add(InstituteModel(
+          title: institution['venue_name'],
+          subtitle: institution['description'],
+          logo: institution['logo'],
+        ));
+      });
+    } catch (error) {
+      log(error.toString());
+    }
+    notifyListeners();
+  }
+
+  Future<void> make_all_fetching() async {
+    loading = true;
+    await Future.wait([
+      fetch_institutions(),
+      fetch_organizations(),
+    ]);
+
+    loading = false;
+    notifyListeners();
+  }
 
   void viewviewOrganisationPressed() {
     viewOrganisation = !viewOrganisation;
