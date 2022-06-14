@@ -9,90 +9,93 @@ class ManagePageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ManagePageViewModel>.reactive(
-      onModelReady: (model) => model.fakeDelay(),
+      onModelReady: (model) => model.make_all_fetching(),
       viewModelBuilder: () => ManagePageViewModel(),
       builder: (context, model, child) => Scaffold(
         appBar: GlobalAppBar(
           title: 'MANAGE PAGE',
           onTap: model.goBack,
         ),
-        body: model.loading
-            ? Center(
-                child: CircularProgressIndicator(),
-              )
-            : Column(
-                children: [
-                  const Divider(
-                    thickness: 4,
-                  ),
-                  // Institution tile
-                  GestureDetector(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 12, horizontal: 14),
-                      width: double.infinity,
-                      color: Colors.transparent,
-                      child: Row(
-                        children: [
-                          Row(
-                            children: [
-                              Icon(Icons.home),
-                              const SizedBox(
-                                width: 6,
-                              ),
-                              Text(
-                                'Create Institute',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              )
-                            ],
+        body: Column(
+          children: [
+            const Divider(
+              thickness: 4,
+            ),
+            // Institution tile
+            GestureDetector(
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 12, horizontal: 14),
+                width: double.infinity,
+                color: Colors.transparent,
+                child: Row(
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.home),
+                        const SizedBox(
+                          width: 6,
+                        ),
+                        Text(
+                          'Create Institute',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
                           ),
-                          Spacer(),
-                          Icon(Icons.arrow_forward_ios)
-                        ],
-                      ),
+                        )
+                      ],
                     ),
-                  ),
-                  // ------End of insttution tile ---------
-                  const Divider(
-                    thickness: 4,
-                  ),
-                  // Organization tile
-                  GestureDetector(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 12, horizontal: 14),
-                      width: double.infinity,
-                      color: Colors.transparent,
-                      child: Row(
-                        children: [
-                          Row(
-                            children: [
-                              Icon(Icons.home),
-                              const SizedBox(
-                                width: 6,
-                              ),
-                              Text(
-                                'Create Organisation',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              )
-                            ],
+                    Spacer(),
+                    Icon(Icons.arrow_forward_ios)
+                  ],
+                ),
+              ),
+            ),
+            // ------End of insttution tile ---------
+            const Divider(
+              thickness: 4,
+            ),
+            // Organization tile
+            GestureDetector(
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 12, horizontal: 14),
+                width: double.infinity,
+                color: Colors.transparent,
+                child: Row(
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.home),
+                        const SizedBox(
+                          width: 6,
+                        ),
+                        Text(
+                          'Create Organisation',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
                           ),
-                          Spacer(),
-                          Icon(Icons.arrow_forward_ios)
-                        ],
-                      ),
+                        )
+                      ],
                     ),
-                  ),
-                  // ------- End of organization tile ---------
-                  // List of institutions and organizations
-                  Expanded(
-                      child: SingleChildScrollView(
+                    Spacer(),
+                    Icon(Icons.arrow_forward_ios)
+                  ],
+                ),
+              ),
+            ),
+            // ------- End of organization tile ---------
+            // List of institutions and organizations
+            model.loading
+                ? Container(
+                    margin: const EdgeInsets.only(top: 40.0),
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  )
+                : Expanded(
+                    child: SingleChildScrollView(
                     child: Column(children: [
                       ListTile(
                         title: Text('Institutes'),
@@ -112,6 +115,7 @@ class ManagePageView extends StatelessWidget {
                             .map((institution) => InstitutesOrganizationTiles(
                                   title: institution.title,
                                   subtitle: institution.subtitle,
+                                  logo: institution.logo,
                                 ))
                             .toList(),
                       ListTile(
@@ -127,16 +131,17 @@ class ManagePageView extends StatelessWidget {
                       ),
                       if (model.viewOrganisation)
                         // List of organizations
-                        ...model.organization
+                        ...model.organizations
                             .map((organization) => InstitutesOrganizationTiles(
                                   title: organization.title,
                                   subtitle: organization.subtitle,
+                                  logo: organization.logo,
                                 ))
                             .toList(),
                     ]),
                   ))
-                ],
-              ),
+          ],
+        ),
       ),
     );
   }
@@ -147,9 +152,11 @@ class InstitutesOrganizationTiles extends StatelessWidget {
     Key? key,
     this.title,
     this.subtitle,
+    this.logo,
   }) : super(key: key);
   final String? title;
   final String? subtitle;
+  final String? logo;
 
   @override
   Widget build(BuildContext context) {
@@ -158,29 +165,32 @@ class InstitutesOrganizationTiles extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Row(children: [
-            Container(
-              margin: const EdgeInsets.only(right: 11),
-              height: 38,
-              width: 38,
-              decoration: BoxDecoration(
-                border: Border.all(width: 0.4, color: Colors.grey),
-                borderRadius: BorderRadius.circular(6),
-              ),
-              child: Icon(Icons.school),
+            CircleAvatar(
+              backgroundImage: logo!.isEmpty
+                  ? NetworkImage(
+                      'https://icon-library.com/images/school-icon/school-icon-19.jpg')
+                  : NetworkImage(logo!),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  title ?? '',
-                  style: TextStyle(color: Colors.grey),
-                ),
-                Text(
-                  subtitle ?? '',
-                  style: TextStyle(color: Colors.grey),
-                ),
-              ],
+            const SizedBox(
+              width: 10,
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    title ?? '',
+                    style: TextStyle(color: Colors.grey),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Text(
+                    subtitle ?? '',
+                    style: TextStyle(color: Colors.grey),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
             )
           ]),
         ),
