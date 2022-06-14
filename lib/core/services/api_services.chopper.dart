@@ -23,4 +23,13 @@ class _$api_services extends api_services {
     final $request = Request('POST', $url, client.baseUrl, body: $body);
     return client.send<dynamic, dynamic>($request);
   }
+
+  @override
+  Future<Response<dynamic>> postOrganizationsVenuesData(
+      Map<String, String> body) {
+    final $url = '/app/getMyVenueOrganization.json';
+    final $body = body;
+    final $request = Request('POST', $url, client.baseUrl, body: $body);
+    return client.send<dynamic, dynamic>($request);
+  }
 }
