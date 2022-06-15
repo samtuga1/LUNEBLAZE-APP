@@ -1,7 +1,9 @@
+import 'package:luneblaze_app/UIs/views/reports_view.dart';
 import 'package:luneblaze_app/app/app.locator.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../app/app.router.dart';
+import '../../UIs/views/reports_view.dart';
 
 class SettingsViewModel extends BaseViewModel {
   final navigation = locator<NavigationService>();
@@ -38,11 +40,13 @@ class SettingsViewModel extends BaseViewModel {
     // Moves to terms of use screen
   }
   void navigateToReport() {
-    // Moves to report screen
+    navigation.navigateTo(Routes.reportsView);
   }
+
   void contactUs() {
-    // Moves to contact us screen
+    // Contact us
   }
+
   void logout() {
     // Logs user out
   }
