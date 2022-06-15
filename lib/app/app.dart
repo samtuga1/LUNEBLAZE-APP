@@ -1,4 +1,5 @@
 import 'package:luneblaze_app/UIs/views/blocked_users_view.dart';
+import 'package:luneblaze_app/UIs/views/reports_view.dart';
 import 'package:luneblaze_app/UIs/views/create_community_view.dart';
 import 'package:luneblaze_app/UIs/views/get_notified_view.dart';
 import 'package:luneblaze_app/UIs/views/manage_communities_view.dart';
@@ -18,6 +19,7 @@ import '../UIs/views/setting_view.dart';
     MaterialRoute(page: ManagePageView),
     MaterialRoute(page: ManageCommunitiesView),
     MaterialRoute(page: CreateCommunityView),
+    MaterialRoute(page: ReportsView),
   ],
   dependencies: [
     LazySingleton(classType: NavigationService),
