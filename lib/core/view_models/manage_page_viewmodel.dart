@@ -1,6 +1,4 @@
 import 'dart:developer';
-import 'dart:ffi';
-
 import 'package:luneblaze_app/core/services/api_services.dart';
 import 'package:luneblaze_app/models/institute_model.dart';
 import 'package:luneblaze_app/models/organization_model.dart';
@@ -10,15 +8,6 @@ import 'package:stacked_services/stacked_services.dart';
 class ManagePageViewModel extends BaseViewModel {
   final _navigation = NavigationService();
   bool loading = false;
-
-// // Fake loading indication function
-//   Future<void> fakeDelay() async {
-//     loading = true;
-//     Future.delayed(Duration(milliseconds: 900), () {
-//       loading = false;
-//       notifyListeners();
-//     });
-//   }
 
   bool viewInstitutes = false;
   bool viewOrganisation = false;
