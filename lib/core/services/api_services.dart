@@ -13,6 +13,10 @@ abstract class api_services extends ChopperService {
   Future<Response> postOrganizationsVenuesData(
     @Body() Map<String, String> body,
   );
+  @Post(path: 'settings.json')
+  Future<Response> postReportsAndContactUsData(
+    @Body() Map<String, String> body,
+  );
 
   static api_services create() {
     final client = ChopperClient(
