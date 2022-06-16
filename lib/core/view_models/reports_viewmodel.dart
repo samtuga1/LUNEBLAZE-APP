@@ -1,34 +1,55 @@
 import 'dart:developer';
-
-import 'package:chopper/chopper.dart';
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:luneblaze_app/core/services/api_services.dart';
+import 'package:luneblaze_app/core/services/image_picker_service/image_picker_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
+import '../../app/app.locator.dart';
 
 class ReportsViewModel extends BaseViewModel {
   final formKey = GlobalKey<FormState>();
   bool loading = false;
+  final navigation = locator<NavigationService>();
+  final imageService = locator<ImagePickerService>();
+  File? imagePicked;
+  File? get imagePick => imagePicked;
+
+// Image picker
+  void pickImage() async {
+    final imageFile = await imageService.pickImage(false);
+    if (imageFile == null) {
+      return;
+    } else {
+      imagePicked = imageFile;
+      log(imagePicked!.path.toString());
+    }
+
+    notifyListeners();
+  }
 
   // Posting requesting
   Future<void> validateAndReport() async {
-    formKey.currentState!.validate();
-    loading = true;
-    notifyListeners();
-    try {
-      log(loading.toString());
-      final response = await api_services.create().postReportsAndContactUsData({
-        'type': 'report_bugs',
-        'section': currentIssue,
-        'user_id': '3',
-        'description': description ?? '',
-      });
-      log(response.statusCode.toString());
-      loading = false;
-      navigation.popRepeated(1);
+    if (!formKey.currentState!.validate()) {
+      return;
+    } else {
+      loading = true;
       notifyListeners();
-    } catch (error) {
-      // Handling of exceptions
+      try {
+        final response =
+            await api_services.create().postReportsAndContactUsData({
+          'type': 'report_bugs',
+          'section': currentIssue,
+          'user_id': '3',
+          'description': description ?? '',
+        });
+        loading = false;
+        navigation.popRepeated(1);
+        notifyListeners();
+      } catch (error) {
+        loading = false;
+        // Handling of exceptions
+      }
     }
   }
 
@@ -58,7 +79,6 @@ class ReportsViewModel extends BaseViewModel {
     // Select image
   }
 
-  final navigation = NavigationService();
   void goBack() {
     navigation.popRepeated(1);
   }
