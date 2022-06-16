@@ -17,6 +17,10 @@ abstract class api_services extends ChopperService {
   Future<Response> postReportsAndContactUsData(
     @Body() Map<String, String> body,
   );
+  @Post(path: 'insertUserEduInfo.json')
+  Future<Response> postgetNotifiedData(
+    @Body() Map<String, String> body,
+  );
 
   static api_services create() {
     final client = ChopperClient(
