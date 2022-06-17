@@ -138,7 +138,10 @@ class ContactUsView extends StatelessWidget {
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: GestureDetector(
-                        onTap: model.validateAndReport,
+                        onTap: () {
+                          FocusScope.of(context).unfocus();
+                          model.validateAndReport();
+                        },
                         child: Container(
                           color: Color(0xFFC7C7C7).withOpacity(0.15),
                           padding: const EdgeInsets.symmetric(
