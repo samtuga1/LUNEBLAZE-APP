@@ -5,8 +5,11 @@ import 'package:luneblaze_app/models/organization_model.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import '../../app/app.locator.dart';
+import '../../app/app.router.dart';
+
 class ManagePageViewModel extends BaseViewModel {
-  final _navigation = NavigationService();
+  final _navigation = locator<NavigationService>();
   bool loading = false;
 
   bool viewInstitutes = false;
@@ -70,9 +73,13 @@ class ManagePageViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  void viewviewOrganisationPressed() {
+  void viewOrganisationPressed() {
     viewOrganisation = !viewOrganisation;
     notifyListeners();
+  }
+
+  void navigateToCreateInstitution() async {
+    _navigation.navigateTo(Routes.createInstitutionsView);
   }
 
   void goBack() {
