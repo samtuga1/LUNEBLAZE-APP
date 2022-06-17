@@ -19,6 +19,7 @@ import '../UIs/views/manage_page_view.dart';
 import '../UIs/views/privacy_settings_view.dart';
 import '../UIs/views/reports_view.dart';
 import '../UIs/views/setting_view.dart';
+import '../UIs/views/create_institutions_view.dart';
 
 class Routes {
   static const String settingsView = '/';
@@ -30,6 +31,7 @@ class Routes {
   static const String createCommunityView = '/create-community-view';
   static const String reportsView = '/reports-view';
   static const String contactUsView = '/contact-us-view';
+  static const String createInstitutionsView = '/create-institutions-view';
   static const all = <String>{
     settingsView,
     privacySettingsView,
@@ -40,6 +42,7 @@ class Routes {
     createCommunityView,
     reportsView,
     contactUsView,
+    createInstitutionsView,
   };
 }
 
@@ -56,6 +59,7 @@ class StackedRouter extends RouterBase {
     RouteDef(Routes.createCommunityView, page: CreateCommunityView),
     RouteDef(Routes.reportsView, page: ReportsView),
     RouteDef(Routes.contactUsView, page: ContactUsView),
+    RouteDef(Routes.createInstitutionsView, page: CreateInstitutionsView),
   ];
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
@@ -111,6 +115,12 @@ class StackedRouter extends RouterBase {
     ContactUsView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => const ContactUsView(),
+        settings: data,
+      );
+    },
+    CreateInstitutionsView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const CreateInstitutionsView(),
         settings: data,
       );
     },
