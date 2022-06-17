@@ -28,26 +28,33 @@ class ManagePageView extends StatelessWidget {
                     const EdgeInsets.symmetric(vertical: 12, horizontal: 14),
                 width: double.infinity,
                 color: Colors.transparent,
-                child: Row(
-                  children: [
-                    Row(
+                child: GestureDetector(
+                  onTap: model.navigateToCreateInstitution,
+                  child: Container(
+                    color: Colors.transparent,
+                    width: double.infinity,
+                    child: Row(
                       children: [
-                        Icon(Icons.home),
-                        const SizedBox(
-                          width: 6,
+                        Row(
+                          children: [
+                            Icon(Icons.home),
+                            const SizedBox(
+                              width: 6,
+                            ),
+                            Text(
+                              'Create Institute',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            )
+                          ],
                         ),
-                        Text(
-                          'Create Institute',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        )
+                        Spacer(),
+                        Icon(Icons.arrow_forward_ios)
                       ],
                     ),
-                    Spacer(),
-                    Icon(Icons.arrow_forward_ios)
-                  ],
+                  ),
                 ),
               ),
             ),
@@ -121,10 +128,11 @@ class ManagePageView extends StatelessWidget {
                       ListTile(
                         title: Text('Organizations'),
                         trailing: IconButton(
-                            icon: Icon(model.viewOrganisation
-                                ? Icons.arrow_downward
-                                : Icons.arrow_forward_ios),
-                            onPressed: model.viewviewOrganisationPressed),
+                          icon: Icon(model.viewOrganisation
+                              ? Icons.arrow_downward
+                              : Icons.arrow_forward_ios),
+                          onPressed: model.viewOrganisationPressed,
+                        ),
                       ),
                       const Divider(
                         indent: 15,
