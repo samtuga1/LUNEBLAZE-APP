@@ -8,6 +8,7 @@ import 'package:luneblaze_app/UIs/views/manage_communities_view.dart';
 import 'package:luneblaze_app/UIs/views/manage_page_view.dart';
 import 'package:luneblaze_app/UIs/views/privacy_settings_view.dart';
 import 'package:luneblaze_app/UIs/views/setting_view.dart';
+import 'package:luneblaze_app/UIs/views/create_institutions_view.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:stacked/stacked_annotations.dart';
 import '../UIs/views/setting_view.dart';
@@ -24,6 +25,7 @@ import '../core/services/image_picker_service/image_picker_service.dart';
     MaterialRoute(page: CreateCommunityView),
     MaterialRoute(page: ReportsView),
     MaterialRoute(page: ContactUsView),
+    MaterialRoute(page: CreateInstitutionsView),
   ],
   dependencies: [
     LazySingleton(classType: NavigationService),
