@@ -228,7 +228,10 @@ class CreateCommunityView extends StatelessWidget {
               ),
               // ADD COMMUNITY BUTTON
               GestureDetector(
-                onTap: model.add_community,
+                onTap: () {
+                  FocusScope.of(context).unfocus();
+                  model.add_community();
+                },
                 child: Container(
                   color: Color(0xFFC7C7C7).withOpacity(0.15),
                   padding:
