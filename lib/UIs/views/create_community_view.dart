@@ -87,7 +87,9 @@ class CreateCommunityView extends StatelessWidget {
                           return null;
                         },
                         onChanged: (value) {
-                          model.toggle_community_name_length(value.length);
+                          model.toggle_community_name_length(
+                            value.trim().length,
+                          );
                         },
                         decoration: InputDecoration(
                           label: Padding(
