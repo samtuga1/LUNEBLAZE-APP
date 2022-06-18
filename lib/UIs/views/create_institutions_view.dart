@@ -41,7 +41,8 @@ class CreateInstitutionsView extends StatelessWidget {
                     ),
                     // Text Field for institution name
                     ReusableTextField(
-                      labelText: 'Eg. XYZ Institue',
+                      keyboardType: TextInputType.text,
+                      hintText: 'Eg. XYZ Institue',
                       onChanged: (value) {
                         model.toggleInstitutionNameLength(value.length);
                       },
@@ -67,12 +68,14 @@ class CreateInstitutionsView extends StatelessWidget {
                       ),
                     ),
                     ReusableTextField(
-                      labelText: 'Eg. John.smith@xyz.com',
+                      keyboardType: TextInputType.emailAddress,
+                      hintText: 'Eg. John.smith@xyz.com',
                       validator: (value) {
                         if (value.isEmpty) {
                           return 'Please enter business email';
+                        } else {
+                          return null;
                         }
-                        return null;
                       },
                     ),
                     const SizedBox(
@@ -88,7 +91,8 @@ class CreateInstitutionsView extends StatelessWidget {
                     ),
 
                     ReusableTextField(
-                      labelText: 'Eg. 9876543210',
+                      keyboardType: TextInputType.numberWithOptions(),
+                      hintText: 'Eg. 9876543210',
                       validator: (value) {
                         if (value.isEmpty) {
                           return 'Please enter business phone';
@@ -109,7 +113,8 @@ class CreateInstitutionsView extends StatelessWidget {
                     ),
 
                     ReusableTextField(
-                      labelText: 'Eg. www.xyz.com',
+                      keyboardType: TextInputType.url,
+                      hintText: 'Eg. www.xyz.com',
                       validator: (value) {
                         if (value.isEmpty) {
                           return 'Please enter website url';
@@ -181,13 +186,15 @@ class CreateInstitutionsView extends StatelessWidget {
 class ReusableTextField extends StatelessWidget {
   const ReusableTextField({
     Key? key,
-    required this.labelText,
+    required this.hintText,
     required this.validator,
     this.onChanged,
+    required this.keyboardType,
   }) : super(key: key);
-  final String labelText;
+  final String hintText;
   final Function(String value) validator;
   final Function(String value)? onChanged;
+  final TextInputType keyboardType;
 
   @override
   Widget build(BuildContext context) {
@@ -199,16 +206,12 @@ class ReusableTextField extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: TextFormField(
+        keyboardType: keyboardType,
         onChanged: (value) => onChanged!(value),
         validator: (value) => validator(value!),
         decoration: InputDecoration(
-          label: Container(
-            child: Text(
-              labelText,
-              style: TextStyle(fontSize: 19),
-            ),
-          ),
-          labelStyle: TextStyle(),
+          hintText: hintText,
+          hintStyle: TextStyle(fontSize: 19),
           border: InputBorder.none,
         ),
       ),
