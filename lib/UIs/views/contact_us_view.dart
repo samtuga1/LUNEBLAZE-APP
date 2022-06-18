@@ -117,7 +117,8 @@ class ContactUsView extends StatelessWidget {
                                     },
                                     onChanged: (value) {
                                       model.increase_description_length(
-                                          value.length);
+                                        value.trim().length,
+                                      );
                                       model.description = value;
                                     },
                                     decoration: InputDecoration(
