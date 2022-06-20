@@ -13,13 +13,14 @@ import 'package:stacked/stacked_annotations.dart';
 import '../UIs/views/blocked_users_view.dart';
 import '../UIs/views/contact_us_view.dart';
 import '../UIs/views/create_community_view.dart';
+import '../UIs/views/create_institutions_view.dart';
 import '../UIs/views/get_notified_view.dart';
 import '../UIs/views/manage_communities_view.dart';
 import '../UIs/views/manage_page_view.dart';
+import '../UIs/views/otp_view.dart';
 import '../UIs/views/privacy_settings_view.dart';
 import '../UIs/views/reports_view.dart';
 import '../UIs/views/setting_view.dart';
-import '../UIs/views/create_institutions_view.dart';
 
 class Routes {
   static const String settingsView = '/';
@@ -32,6 +33,7 @@ class Routes {
   static const String reportsView = '/reports-view';
   static const String contactUsView = '/contact-us-view';
   static const String createInstitutionsView = '/create-institutions-view';
+  static const String otpView = '/otp-view';
   static const all = <String>{
     settingsView,
     privacySettingsView,
@@ -43,6 +45,7 @@ class Routes {
     reportsView,
     contactUsView,
     createInstitutionsView,
+    otpView,
   };
 }
 
@@ -60,6 +63,7 @@ class StackedRouter extends RouterBase {
     RouteDef(Routes.reportsView, page: ReportsView),
     RouteDef(Routes.contactUsView, page: ContactUsView),
     RouteDef(Routes.createInstitutionsView, page: CreateInstitutionsView),
+    RouteDef(Routes.otpView, page: OtpView),
   ];
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
@@ -121,6 +125,12 @@ class StackedRouter extends RouterBase {
     CreateInstitutionsView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => const CreateInstitutionsView(),
+        settings: data,
+      );
+    },
+    OtpView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const OtpView(),
         settings: data,
       );
     },
