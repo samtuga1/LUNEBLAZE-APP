@@ -4,16 +4,21 @@ import 'package:flutter/material.dart';
 class GlobalAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(kBottomNavigationBarHeight);
-  const GlobalAppBar({Key? key, required this.title, required this.onTap})
+  const GlobalAppBar(
+      {Key? key,
+      required this.title,
+      required this.onTap,
+      required this.backgroundColor})
       : super(key: key);
   final String title;
   final Function()? onTap;
+  final Color backgroundColor;
   @override
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: true,
       elevation: 0,
-      backgroundColor: Colors.white,
+      backgroundColor: backgroundColor,
       leading: IconButton(
         icon: Icon(Icons.arrow_back),
         onPressed: onTap,
