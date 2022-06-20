@@ -15,6 +15,7 @@ class GetNotifiedView extends StatelessWidget {
         builder: (context, model, child) => Scaffold(
               backgroundColor: Color(0xFFEDEDED),
               appBar: GlobalAppBar(
+                backgroundColor: Colors.white,
                 title: 'APPLY FOR JOB/INTERNSHIP',
                 onTap: model.goBack,
               ),
