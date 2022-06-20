@@ -55,7 +55,7 @@ class OtpView extends StatelessWidget {
                         height: 58,
                         width: 58,
                         child: TextFormField(
-                          cursorColor: Colors.grey.withOpacity(0.5),
+                          showCursor: false,
                           autofocus: true,
                           onChanged: (value) {
                             if (value.length == 1) {
@@ -80,7 +80,7 @@ class OtpView extends StatelessWidget {
                         height: 58,
                         width: 58,
                         child: TextFormField(
-                          cursorColor: Colors.grey.withOpacity(0.5),
+                          showCursor: false,
                           onChanged: (value) {
                             if (value.length == 1) {
                               model.secondOtp = value;
@@ -104,7 +104,7 @@ class OtpView extends StatelessWidget {
                         height: 58,
                         width: 58,
                         child: TextFormField(
-                          cursorColor: Colors.grey.withOpacity(0.5),
+                          showCursor: false,
                           onChanged: (value) {
                             if (value.length == 1) {
                               model.thrirdOtp = value;
@@ -128,7 +128,7 @@ class OtpView extends StatelessWidget {
                         height: 58,
                         width: 58,
                         child: TextFormField(
-                          cursorColor: Colors.grey.withOpacity(0.5),
+                          showCursor: false,
                           onChanged: (value) {
                             if (value.length == 1) {
                               model.fouthOtp = value;
@@ -152,7 +152,7 @@ class OtpView extends StatelessWidget {
                         height: 58,
                         width: 58,
                         child: TextFormField(
-                          cursorColor: Colors.grey.withOpacity(0.5),
+                          showCursor: false,
                           onChanged: (value) {
                             if (value.length == 1) {
                               model.fifthOtp = value;
@@ -176,7 +176,6 @@ class OtpView extends StatelessWidget {
                         height: 58,
                         width: 58,
                         child: TextFormField(
-                          cursorColor: Colors.grey.withOpacity(0.2),
                           showCursor: false,
                           onChanged: (value) {
                             if (value.length == 1) {
