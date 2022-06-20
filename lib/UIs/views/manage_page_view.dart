@@ -13,6 +13,7 @@ class ManagePageView extends StatelessWidget {
       viewModelBuilder: () => ManagePageViewModel(),
       builder: (context, model, child) => Scaffold(
         appBar: GlobalAppBar(
+          backgroundColor: Colors.white,
           title: 'MANAGE PAGE',
           onTap: model.goBack,
         ),
