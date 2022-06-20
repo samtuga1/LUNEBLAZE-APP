@@ -16,6 +16,7 @@ class SettingsView extends StatelessWidget {
       builder: (context, model, child) => Scaffold(
         backgroundColor: Colors.white,
         appBar: GlobalAppBar(
+          backgroundColor: Colors.white,
           title: 'SETTINGS',
           onTap: null, //model.goBack,
         ),
