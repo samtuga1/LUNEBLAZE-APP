@@ -12,6 +12,7 @@ class CreateCommunityView extends StatelessWidget {
       viewModelBuilder: () => CreateCommunityViewModel(),
       builder: (context, model, _) => Scaffold(
         appBar: GlobalAppBar(
+          backgroundColor: Colors.white,
           title: 'CREATE COMMUNITY',
           onTap: model.goBack,
         ),
