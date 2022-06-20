@@ -11,6 +11,7 @@ import 'package:luneblaze_app/UIs/views/setting_view.dart';
 import 'package:luneblaze_app/UIs/views/create_institutions_view.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:stacked/stacked_annotations.dart';
+import '../UIs/views/otp_view.dart';
 import '../UIs/views/setting_view.dart';
 import '../core/services/image_picker_service/image_picker_service.dart';
 
@@ -26,6 +27,7 @@ import '../core/services/image_picker_service/image_picker_service.dart';
     MaterialRoute(page: ReportsView),
     MaterialRoute(page: ContactUsView),
     MaterialRoute(page: CreateInstitutionsView),
+    MaterialRoute(page: OtpView),
   ],
   dependencies: [
     LazySingleton(classType: NavigationService),
