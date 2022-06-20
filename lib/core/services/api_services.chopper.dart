@@ -17,7 +17,7 @@ class _$api_services extends api_services {
   final definitionType = api_services;
 
   @override
-  Future<Response<dynamic>> postPrivacyData(Map<String, String> body) {
+  Future<Response<dynamic>> postPrivacyData(Map<String, dynamic> body) {
     final $url = '/app/profile.json';
     final $body = body;
     final $request = Request('POST', $url, client.baseUrl, body: $body);
@@ -26,7 +26,7 @@ class _$api_services extends api_services {
 
   @override
   Future<Response<dynamic>> postOrganizationsVenuesData(
-      Map<String, String> body) {
+      Map<String, dynamic> body) {
     final $url = '/app/getMyVenueOrganization.json';
     final $body = body;
     final $request = Request('POST', $url, client.baseUrl, body: $body);
@@ -35,7 +35,7 @@ class _$api_services extends api_services {
 
   @override
   Future<Response<dynamic>> postReportsAndContactUsData(
-      Map<String, String> body) {
+      Map<String, dynamic> body) {
     final $url = '/app/settings.json';
     final $body = body;
     final $request = Request('POST', $url, client.baseUrl, body: $body);
@@ -43,8 +43,16 @@ class _$api_services extends api_services {
   }
 
   @override
-  Future<Response<dynamic>> postgetNotifiedData(Map<String, String> body) {
+  Future<Response<dynamic>> postgetNotifiedData(Map<String, dynamic> body) {
     final $url = '/app/insertUserEduInfo.json';
+    final $body = body;
+    final $request = Request('POST', $url, client.baseUrl, body: $body);
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<dynamic>> postInstitutionData(Map<String, dynamic> body) {
+    final $url = '/app/addVenue.json';
     final $body = body;
     final $request = Request('POST', $url, client.baseUrl, body: $body);
     return client.send<dynamic, dynamic>($request);
