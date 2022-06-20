@@ -15,6 +15,7 @@ class PrivacySettingsView extends StatelessWidget {
       builder: (context, model, child) => Scaffold(
           backgroundColor: Colors.white,
           appBar: GlobalAppBar(
+            backgroundColor: Colors.white,
             title: 'PRIVACY SETTINGS',
             onTap: model.goBack,
           ),
