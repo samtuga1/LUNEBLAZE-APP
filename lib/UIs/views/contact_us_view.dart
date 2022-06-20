@@ -11,7 +11,10 @@ class ContactUsView extends StatelessWidget {
     return ViewModelBuilder<ContactUsViewModel>.reactive(
       viewModelBuilder: () => ContactUsViewModel(),
       builder: (context, model, _) => Scaffold(
-        appBar: GlobalAppBar(title: 'CONTACT US', onTap: model.goBack),
+        appBar: GlobalAppBar(
+            backgroundColor: Colors.white,
+            title: 'CONTACT US',
+            onTap: model.goBack),
         body: model.loading
             ? Center(
                 child: CircularProgressIndicator(),
