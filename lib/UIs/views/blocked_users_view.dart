@@ -12,6 +12,7 @@ class BlockedUsersView extends StatelessWidget {
       viewModelBuilder: () => BlockedUsersViewModel(),
       builder: (context, model, child) => Scaffold(
           appBar: GlobalAppBar(
+            backgroundColor: Colors.white,
             title: 'BLOCKED USERS',
             onTap: model.goBack,
           ),
