@@ -16,6 +16,7 @@ class ReportsView extends StatelessWidget {
       builder: (context, model, _) => Scaffold(
         backgroundColor: Colors.white,
         appBar: GlobalAppBar(
+          backgroundColor: Colors.white,
           title: 'HOW CAN WE HELP YOU?',
           onTap: model.goBack,
         ),
